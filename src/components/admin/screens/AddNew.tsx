@@ -37,7 +37,7 @@ const AddNew: React.FC = () => {
     <div>
       <Header
         title="Dodajte nov proizvod"
-        subtitle="Unesite potrebne informacije."
+        subtitle="Unesite informacije."
       />
 
       <div className="my-[4rem]" />
