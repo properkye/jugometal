@@ -835,3 +835,81 @@ export const traktorskiDeloviCategories:CategoryBoxProps[] = [
     quantity:''
   },
 ]
+
+export const deloviZaMasineCategories:CategoryBoxProps[] = [
+  {
+    alt:'SIP Šempeter Slovenija delovi za mašine, SIP Šempeter Srbija Jugometal, SIP Šempeter Slovenija, delovi za priključne mašine',
+    image:'/images/masine/sip-delovi.png',
+    link:'/rezervni-delovi/delovi-za-prikljucne-masine/sip-sempeter',
+    quantity:''
+  },
+  {
+    alt:'Rotaciona kosa Poljska delovi za mašine, Rotaciona kosa Srbija Jugometal, Rotaciona kosa Poljska, delovi za priključne mašine',
+    image:'/images/masine/rotaciona-delovi.png',
+    link:'/rezervni-delovi/delovi-za-prikljucne-masine/rotaciona-kosa-poljska',
+    quantity:''
+  },
+  {
+    alt:'Agromehanika Kranj delovi za mašine, Agromehanika Kranj Srbija Jugometal, Agromehanika Kranj, delovi za priključne mašine',
+    image:'/images/masine/agro-delovi.png',
+    link:'/rezervni-delovi/delovi-za-prikljucne-masine/agromehanika-kranj',
+    quantity:''
+  },
+  {
+    alt:'Majevica delovi za mašine, Majevica Srbija Jugometal, Majevica, delovi za priključne mašine',
+    image:'/images/masine/majevica-delovi.png',
+    link:'/rezervni-delovi/delovi-za-prikljucne-masine/majevica',
+    quantity:''
+  },
+  {
+    alt:'FPM Agromehanika delovi za mašine, FPM Agromehanika Srbija Jugometal, FPM Agromehanika delovi za priključne mašine',
+    image:'/images/masine/fpm-delovi.png',
+    link:'/rezervni-delovi/delovi-za-prikljucne-masine/fpm-agromehanika',
+    quantity:''
+  },
+  {
+    alt:'INO Brežice delovi za mašine, INO Brežice Srbija Jugometal, INO Brežice delovi za priključne mašine',
+    image:'/images/masine/ino-delovi.png',
+    link:'/rezervni-delovi/delovi-za-prikljucne-masine/ino-brezice',
+    quantity:''
+  },
+]
+
+export const ostaloCategories:CategoryBoxProps[] = [
+  {
+    alt:'Kardani delovi za mašine, Kardani Srbija Jugometal, Kardani, delovi za priključne mašine',
+    image:'/images/masine/kardani-delovi.png',
+    link:'/rezervni-delovi/ostalo/kardani',
+    quantity:''
+  },
+  {
+    alt:'Ulja i maziva delovi za mašine, Ulja i maziva Srbija Jugometal, Ulja i maziva, delovi za priključne mašine',
+    image:'/images/masine/ulja-delovi.png',
+    link:'/rezervni-delovi/ostalo/ulja-i-maziva',
+    quantity:''
+  },
+  {
+    alt:'Hladnjaci delovi za mašine, Hladnjaci Srbija Jugometal, Hladnjaci, delovi za priključne mašine',
+    image:'/images/masine/hladnjaci-delovi.png',
+    link:'/rezervni-delovi/ostalo/hladnjaci',
+    quantity:''
+  },
+  {
+    alt:'Trimeri delovi za mašine, Trimeri Srbija Jugometal, Trimeri, delovi za priključne mašine',
+    image:'/images/masine/trimeri-delovi.png',
+    link:'/rezervni-delovi/ostalo/trimeri',
+    quantity:''
+  },
+  {
+    alt:'Spoljne gume delovi za mašine, Spoljne gume Srbija Jugometal, Spoljne gume, delovi za priključne mašine',
+    image:'/images/masine/spoljne-delovi.png',
+    link:'/rezervni-delovi/ostalo/spoljne-gume',
+    quantity:''
+  },
+  {
+    alt:'Razno delovi za mašine, Razno Srbija Jugometal, Razno, delovi za priključne mašine',
+    image:'/images/masine/razno-delovi.png',
+    link:'/rezervni-delovi/ostalo/razno',
+    quantity:''
+  },
+]

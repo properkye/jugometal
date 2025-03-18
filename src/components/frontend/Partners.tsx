@@ -26,6 +26,7 @@ const PartnersCarousel: React.FC = () => {
                     src={item.image}
                     fill
                     style={{ objectFit: "contain" }}
+                    sizes="(max-width: 640px) 100px, (max-width: 768px) 150px, 200px"
                   />
                 </div>
               </CarouselItem>

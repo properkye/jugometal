@@ -1,9 +1,9 @@
 import FrontLayout from "@/components/layouts/FrontLayout";
-import { traktorskiDeloviCategories } from "@/data";
+import { ostaloCategories } from "@/data";
 import CategoryItemBox from "@/components/frontend/CategoryItemBox";
 import ProductsIntro from "@/components/frontend/ProductsIntro";
 
-export default function TraktorskiDelovi() {
+export default function Ostalo() {
   return (
     <FrontLayout>
       <ProductsIntro
@@ -16,7 +16,7 @@ export default function TraktorskiDelovi() {
 
       <div className="bg-[#fafafa] w-full h-full">
         <div className="wrapper py-10 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
-          {traktorskiDeloviCategories.map((item, i) => (
+          {ostaloCategories.map((item, i) => (
             <CategoryItemBox
               quantity={item.quantity}
               alt={item.alt}

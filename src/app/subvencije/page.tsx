@@ -125,35 +125,18 @@ const accordion:TractorAccordionProps[] = [
   }
 ]
 
-export default function Kontakt() {
+export default function Subvencije() {
   return (
     <FrontLayout>
       <CatBaner
-        title="Kontakt informacije."
-        subtitle="Kontaktirajte nas za uspešno poljoprivredno poslovanje."
+        title="Subvencioni programi."
+        subtitle="Vidi sta treba ovde da se s tavi."
         alt={meta}
-        imgSrc="/banners/jugo2.jpg"
+        imgSrc="/banners/subv.jpg"
         href="/prikljucne-masine"
       />
 
-      <div className="wrapper xl:grid xl:grid-cols-2 xl:gap-10 xl:py-20 xl:justify-between">
-        <div>
-          <EntrySection
-            title="Kontakt informacije."
-            subtitle="Jugometal Svilajnac, Temerin, Požarevac"
-            text="Budite slobodni da nas kontaktirate za svako pitanje koje imate."
-            wrapper={false}
-          />
-        </div>
 
-        <AccordionSection data={accordion} />
-      </div>
-
-     
-      <div className="wrapper">
-        <ProductQuestion />
-        <ContactForm />
-      </div>
     </FrontLayout>
   );
 }

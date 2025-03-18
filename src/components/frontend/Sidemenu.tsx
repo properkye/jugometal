@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import { CiSearch } from "react-icons/ci";
 import { AiOutlineClose } from "react-icons/ai";
 
 interface SidemenuProps {
@@ -27,14 +26,29 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
           className="absolute top-6 right-2 cursor-pointer"
         />
 
-        <div className="border border-[#e9e9e9] w-full mt-20 rounded-lg py-2 px-4 flex justify-between items-center bg-gray-100">
-            <input type="text" placeholder="Pretražite proizvode..." className="w-[85%] outline-none bg-inherit"  />
-            <CiSearch size={26} />
-        </div>
+          {/* accordion */}
+        
+          <ul className="mt-10">
+            <li className="py-2">Traktori</li>
+            <li className="py-2">Priključne mašine</li>
+            <li className="py-2">Rezervni delovi</li>
+          </ul>
 
-        <div>
+          <ul className="mt-10">
+            <li className="py-2">O nama</li>
+            <li className="py-2">Kontakt</li>
+            <li className="py-2">Servis</li>
+            <li className="py-2">Subvencije</li>
+            <li className="py-2">Akcije</li>
+          </ul>
 
-        </div>
+          <ul className="mt-10">
+            <li className="py-2">Telefon: 035/312-391 </li>
+            <li className="py-2">E-mejl: info@jugometal.co.rs</li>
+            <li className="py-2">Adresa: Kneza Miloša 51, 35210</li>
+
+          </ul>
+
       </div>
     </motion.aside>
   );
