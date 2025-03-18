@@ -22,8 +22,6 @@ export default async function Product({
 }) {
   const { product, brand } = await params;
 
-  console.log(product);
-  console.log(brand);
 
   if (!product) {
     return (
@@ -107,7 +105,7 @@ export default async function Product({
             </Breadcrumb>
           </div>
           <div className="lg:grid lg:grid-cols-[49%_49%] lg:justify-between lg:items-center ">
-            <ProductImage src={single.image} alt={single.description_one} />
+            <ProductImage src={single.images[0]} alt={single.description_one} />
             <div className="">
               <div className="h-[auto] w-[100px] relative">
                 <Image

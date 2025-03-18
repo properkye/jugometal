@@ -18,7 +18,7 @@ const ProductBox: React.FC<ProductBoxProps> = ({ product, url, border }) => {
       <TopCard title={product.name} brand={product.brand} />
       <div className="relative w-[100%] h-[300px] my-[2rem]">
         <Image
-          src={product.image}
+          src={product.images[0]}
           priority={true}
           alt={product.description_one}
           width={200}

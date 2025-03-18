@@ -17,7 +17,7 @@ export interface Product {
   subcategory: string;
   regular_price?: string;
   action_price?: string;
-  image: string;
+  images: string[];
   pdf_file?: string | null;
   brand: string;
   features?: string[];

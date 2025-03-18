@@ -17,6 +17,7 @@ const EditProduct: React.FC = () => {
   const { setSelectScreen, from, product, setFeedback, setData } =
     useAdminContext();
 
+  console.log(product);
 
   const [changeName, setChangeName] = useState(product?.name ?? "");
   const [changeD1, setChangeD1] = useState(product?.description_one ?? "");
@@ -45,63 +46,75 @@ const EditProduct: React.FC = () => {
     changeF5 !== (product?.features?.[4] ?? "") ||
     changeF6 !== (product?.features?.[5] ?? "");
 
-  const deleteProduct = async () => {
-    if (!product?.id || !product?.image) {
-      console.error("Greška: Nedostaje ID proizvoda ili URL slike.");
-      return;
-    }
-
-    try {
-      // 1️⃣ Dobijamo tačnu putanju fajla u storage-u
-      const storagePrefix =
-        "https://hbimjllhujrqysckvtkw.supabase.co/storage/v1/object/public/";
-      if (!product.image.startsWith(storagePrefix)) {
-        console.error("Greška: URL slike nije validan.");
+    const deleteProduct = async () => {
+      if (!product?.id || !product?.images || product.images.length === 0) {
+        console.error("Greška: Nedostaje ID proizvoda ili slike.");
         return;
       }
-
-      const imagePath = product.image.replace(storagePrefix, ""); // Uklanja nepotreban deo URL-a
-      const bucketName = imagePath.split("/")[0]; // Uzimamo bucket name
-      const filePath = imagePath.substring(bucketName.length + 1); // Uklanjamo bucket iz putanje
-
-      // 2️⃣ Brisanje slike iz Supabase Storage-a
-      const { error: storageError } = await supabase.storage
-        .from(bucketName)
-        .remove([filePath]);
-
-      if (storageError) {
-        console.error("Greška pri brisanju slike:", storageError.message);
-      } else {
-        console.log("✅ Slika uspešno obrisana!");
+    
+      try {
+        const storagePrefix =
+          "https://hbimjllhujrqysckvtkw.supabase.co/storage/v1/object/public/";
+    
+        // 1️⃣ Brisanje svih slika iz Storage-a
+        const imagePaths = product.images
+          .map((imageUrl) => {
+            if (!imageUrl.startsWith(storagePrefix)) {
+              console.error("Greška: URL slike nije validan.", imageUrl);
+              return null;
+            }
+            return imageUrl.replace(storagePrefix, ""); // Uklanja nepotreban deo URL-a
+          })
+          .filter((path): path is string => !!path); // 🚀 Osiguravamo da `path` nije `null`
+    
+        if (imagePaths.length > 0) {
+          const firstImagePath = imagePaths[0]; // Uzmi prvi validan path za bucket name
+          if (!firstImagePath) {
+            console.error("❌ Greška: Ne može se dobiti naziv bucket-a.");
+            return;
+          }
+    
+          const bucketName = firstImagePath.split("/")[0]; // Uzimamo bucket name (isti za sve slike)
+          const filePaths = imagePaths.map((path) => path.substring(bucketName.length + 1)); // Uklanjamo bucket iz putanje
+    
+          const { error: storageError } = await supabase.storage.from(bucketName).remove(filePaths);
+    
+          if (storageError) {
+            console.error("❌ Greška pri brisanju slika:", storageError.message);
+          } else {
+            console.log("✅ Sve slike su uspešno obrisane iz Storage-a!");
+          }
+        }
+    
+        // 2️⃣ Brisanje proizvoda iz baze
+        const { error: dbError } = await supabase
+          .from("products")
+          .delete()
+          .match({ id: product.id });
+    
+        if (dbError) {
+          console.error("❌ Greška pri brisanju proizvoda:", dbError.message);
+        } else {
+          console.log("✅ Proizvod uspešno obrisan!");
+    
+          // 3️⃣ Brišemo proizvod iz lokalnog state-a
+          setData((prev: Product[]) => prev.filter((p) => p.id !== product.id));
+    
+          setFeedback(true, {
+            title: "Proizvod uspešno obrisan.",
+            subtitle: "Uspešno ste izbrisali proizvod iz baze i storage-a.",
+            action: () => {
+              setFeedback(false);
+              setSelectScreen("traktori-list");
+            },
+          });
+        }
+      } catch (error) {
+        console.error("❌ Neočekivana greška:", error);
       }
-
-      // 3️⃣ Brisanje proizvoda iz baze
-      const { error: dbError } = await supabase
-        .from("products")
-        .delete()
-        .match({ id: product.id });
-
-      if (dbError) {
-        console.error("❌ Greška pri brisanju proizvoda:", dbError.message);
-      } else {
-        console.log("✅ Proizvod uspešno obrisan!");
-
-        // 4️⃣ Odmah brišemo proizvod iz lokalnog state-a
-        setData((prev: Product[]) => prev.filter((p) => p.id !== product.id));
-
-        setFeedback(true, {
-          title: "Proizvod uspešno obrisan.",
-          subtitle: "Uspešno ste izbrisali proizvod iz baze i storage-a.",
-          action: () => {
-            setFeedback(false);
-            setSelectScreen("traktori-list");
-          },
-        });
-      }
-    } catch (error) {
-      console.error("❌ Neočekivana greška:", error);
-    }
-  };
+    };
+    
+    
 
   const editProduct = async () => {
     if (!isChanged) return; // Ako nema promena, ne radi ništa
@@ -115,7 +128,7 @@ const EditProduct: React.FC = () => {
       features: [changeF1, changeF2, changeF3, changeF4, changeF5, changeF6],
     };
 
-    const { data,error } = await supabase
+    const { data, error } = await supabase
       .from("products")
       .update(updatedProduct) // Ažurira samo ono što je promenjeno
       .match({ id: product?.id })
@@ -133,8 +146,8 @@ const EditProduct: React.FC = () => {
         title: "Proizvod ažuriran",
         subtitle: "Podaci su uspešno ažurirani u bazi.",
         action: () => {
-          setFeedback(false)
-          setSelectScreen(from)
+          setFeedback(false);
+          setSelectScreen(from);
         },
       });
     }
@@ -176,7 +189,7 @@ const EditProduct: React.FC = () => {
           setF6={setChangeF6}
           category={product?.category}
         />
-        <RightContainerEdit imageFile={product?.image} />
+        <RightContainerEdit images={product?.images ?? []} />
       </div>
 
       {isChanged ? (
@@ -231,7 +244,7 @@ interface LeftContainerProps {
 
   f6?: string;
   setF6: (feature: string) => void;
-  category?:string
+  category?: string;
 }
 
 const LeftContainerEdit: React.FC<LeftContainerProps> = ({
@@ -257,7 +270,7 @@ const LeftContainerEdit: React.FC<LeftContainerProps> = ({
   setF5,
   f6,
   setF6,
-  category
+  category,
 }) => {
   return (
     <div className="w-[60%]">
@@ -286,55 +299,53 @@ const LeftContainerEdit: React.FC<LeftContainerProps> = ({
         />
       </InputWrapper>
 
-
-
-      {category !== 'rezervni-delovi' && (
+      {category !== "rezervni-delovi" && (
         <InputWrapper title="Karakteristike proizvoda." margin={true}>
-        <FeatureItemWrapper>
-          <FeatureItem
-            label="Karakteristika #1"
-            placeholder="Karakteristika #1"
-            value={f1 ?? ""}
-            onChange={setF1}
-          />
-          <FeatureItem
-            label="Karakteristika #2"
-            placeholder="Karakteristika #2"
-            value={f2 ?? ""}
-            onChange={setF2}
-          />
-        </FeatureItemWrapper>
+          <FeatureItemWrapper>
+            <FeatureItem
+              label="Karakteristika #1"
+              placeholder="Karakteristika #1"
+              value={f1 ?? ""}
+              onChange={setF1}
+            />
+            <FeatureItem
+              label="Karakteristika #2"
+              placeholder="Karakteristika #2"
+              value={f2 ?? ""}
+              onChange={setF2}
+            />
+          </FeatureItemWrapper>
 
-        <FeatureItemWrapper>
-          <FeatureItem
-            label="Karakteristika #3"
-            placeholder="Karakteristika #3"
-            value={f3 ?? ""}
-            onChange={setF3}
-          />
-          <FeatureItem
-            label="Karakteristika #4"
-            placeholder="Karakteristika #4"
-            value={f4 ?? ""}
-            onChange={setF4}
-          />
-        </FeatureItemWrapper>
+          <FeatureItemWrapper>
+            <FeatureItem
+              label="Karakteristika #3"
+              placeholder="Karakteristika #3"
+              value={f3 ?? ""}
+              onChange={setF3}
+            />
+            <FeatureItem
+              label="Karakteristika #4"
+              placeholder="Karakteristika #4"
+              value={f4 ?? ""}
+              onChange={setF4}
+            />
+          </FeatureItemWrapper>
 
-        <FeatureItemWrapper>
-          <FeatureItem
-            label="Karakteristika #5"
-            placeholder="Karakteristika #5"
-            value={f5 ?? ""}
-            onChange={setF5}
-          />
-          <FeatureItem
-            label="Karakteristika #6"
-            placeholder="Karakteristika #6"
-            value={f6 ?? ""}
-            onChange={setF6}
-          />
-        </FeatureItemWrapper>
-      </InputWrapper>
+          <FeatureItemWrapper>
+            <FeatureItem
+              label="Karakteristika #5"
+              placeholder="Karakteristika #5"
+              value={f5 ?? ""}
+              onChange={setF5}
+            />
+            <FeatureItem
+              label="Karakteristika #6"
+              placeholder="Karakteristika #6"
+              value={f6 ?? ""}
+              onChange={setF6}
+            />
+          </FeatureItemWrapper>
+        </InputWrapper>
       )}
 
       <InputWrapper title="Cena proizvoda" margin={false}>
@@ -358,10 +369,10 @@ const LeftContainerEdit: React.FC<LeftContainerProps> = ({
 };
 
 interface RightContainerProps {
-  imageFile?: string;
+  images: string[];
 }
 
-const RightContainerEdit: React.FC<RightContainerProps> = ({ imageFile }) => {
+const RightContainerEdit: React.FC<RightContainerProps> = ({ images }) => {
   return (
     <div className="w-[39%]">
       <div className="rounded-lg p-4 bg-[#fcfcfc] h-[600px] mb-10">
@@ -369,7 +380,7 @@ const RightContainerEdit: React.FC<RightContainerProps> = ({ imageFile }) => {
 
         <div className="h-[80%] w-[100%] mt-4 rounded-lg relative overflow-hidden z-10">
           <Image
-            src={imageFile ?? ""}
+            src={images[0] ?? ""}
             alt="Uploaded"
             sizes="500px"
             fill
@@ -378,84 +389,17 @@ const RightContainerEdit: React.FC<RightContainerProps> = ({ imageFile }) => {
           />
         </div>
 
-        {/* Input koji će otvarati file picker */}
-        {/* <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              id="fileInput"
-              onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                  setImageFile(e.target.files[0]);
-                }
-              }}
-            /> */}
-
-        {/* Ako slika ne postoji, prikazujemo label da može da se klikne */}
-        {/* {!imageFile ? (
-              <label
-                htmlFor="fileInput"
-                className="h-[80%] w-[100%] mt-4 rounded-lg grid place-content-center bg-[#efefef] cursor-pointer overflow-hidden"
-              >
-                <CiCirclePlus size={100} color="green" />
-              </label>
-            ) : (
-              <div className="h-[80%] w-[100%] mt-4 rounded-lg relative overflow-hidden z-10">
-                <Image
-                  src={URL.createObjectURL(imageFile)}
-                  alt="Uploaded"
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="rounded-lg z-10"
-                />
-              </div>
-            )} */}
-
-        {/* Dugme za brisanje slike */}
-        {/* {imageFile ? (
-              <div
-                className="mt-6 flex gap-2 items-center cursor-pointer"
-                onClick={handleDeleteImage}
-              >
-                <MdDelete size={26} color="red" />
-                <p>Obrišite sliku</p>
-              </div>
-            ) : (
-              <div className="mt-6 flex gap-2 items-center cursor-pointer">
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  id="fileInput"
-                  onChange={(e) => {
-                    if (e.target.files && e.target.files.length > 0) {
-                      setImageFile(e.target.files[0]);
-                    }
-                  }}
-                />
-                <label
-                  htmlFor="fileInput"
-                  className="rounded-lg flex cursor-pointer overflow-hidden gap-2 items-center"
-                >
-                  <CiCirclePlus size={26} color="green" />
-                  <p>Dodajte sliku</p>
-                </label>
-              </div>
-            )} */}
-      </div>
-
-      {/* <div className="rounded-lg p-4 bg-[#fcfcfc] h-fit">
-            <h2 className="text-[1.5rem]">Ubacite PDF fajl</h2>
-            <input
-              type="file"
-              accept="application/pdf"
-              onChange={handlePdfChange}
-              className="mt-2 p-2 border rounded-lg w-full"
+        <div className="mt-6 grid grid-cols-4 gap-2 p-4 bg-slate-50">
+          {/* Prikaz slika u gridu */}
+          {images.slice(1).map((imageUrl, i) => (
+            <div
+              key={i}
+              className="relative border border-gray-400 h-[100px] w-[100px] rounded-lg flex items-center justify-center bg-cover bg-center"
+              style={{ backgroundImage: `url(${imageUrl})` }}
             />
-            {pdfFile && (
-              <p className="mt-2 text-sm">Odabrani fajl: {pdfFile.name}</p>
-            )}
-          </div> */}
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

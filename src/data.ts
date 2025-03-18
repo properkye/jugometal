@@ -802,3 +802,36 @@ export const deloviCategories:CategoryBoxProps[] = [
   },
 ]
 
+
+export const traktorskiDeloviCategories:CategoryBoxProps[] = [
+  {
+    alt:'Massey Ferguson Traktorski rezervni delovi Srbija, Massey Ferguson  Traktorski rezervni delovi Jugometal, Traktorski rezervni delovi Massey Ferguson',
+    image:'/images/masine/masey-delovi.png',
+    link:'/rezervni-delovi/traktorski-delovi/massey-ferguson',
+    quantity:''
+  },
+  {
+    alt:'Landini Traktorski rezervni delovi Srbija, Landini  Traktorski rezervni delovi Jugometal, Traktorski rezervni delovi Landini',
+    image:'/images/masine/landini-delovi.png',
+    link:'/rezervni-delovi/traktorski-delovi/landini',
+    quantity:''
+  },
+  {
+    alt:'IMT Traktorski rezervni delovi Srbija, IMT  Traktorski rezervni delovi Jugometal, Traktorski rezervni delovi IMT',
+    image:'/images/masine/imt-delovi.png',
+    link:'/rezervni-delovi/traktorski-delovi/imt',
+    quantity:''
+  },
+  {
+    alt:'Solis Traktorski rezervni delovi Srbija, Solis  Traktorski rezervni delovi Jugometal, Traktorski rezervni delovi Solis',
+    image:'/images/masine/solis-delovi.png',
+    link:'/rezervni-delovi/traktorski-delovi/solis',
+    quantity:''
+  },
+  {
+    alt:'YTO Traktorski rezervni delovi Srbija, YTO  Traktorski rezervni delovi Jugometal, Traktorski rezervni delovi YTO',
+    image:'/images/masine/yto-delovi.png',
+    link:'/rezervni-delovi/traktorski-delovi/yto',
+    quantity:''
+  },
+]

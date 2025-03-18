@@ -6,14 +6,17 @@ import { supabase } from "@/lib/supabase";
 import {
   FeatureItem,
   FeatureItemWrapper,
+  ImageGallery,
   InputWrapper,
   RegularInput,
+  slugify,
   Textarea,
 } from "./ProductDetails";
-import Image from "next/image";
-import { CiCirclePlus } from "react-icons/ci";
-import { MdDelete } from "react-icons/md";
 import NextButton from "../NextButton";
+
+export const cleanFileName = (fileName: string) => {
+  return fileName.replace(/\s+/g, "-"); // Zamena svih razmaka sa "-"
+};
 
 const PartProductDetails: React.FC = () => {
   const {
@@ -23,7 +26,7 @@ const PartProductDetails: React.FC = () => {
     subcategory,
     resetState,
     selectBrand,
-    setData
+    setData,
   } = useAdminContext();
 
   const [name, setName] = useState("");
@@ -31,31 +34,35 @@ const PartProductDetails: React.FC = () => {
   const [d1, setD1] = useState("");
   const [d2, setD2] = useState("");
 
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [images, setImages] = useState<File[]>([]);
 
   const [price, setPrice] = useState("");
   const [action, setAction] = useState("");
 
-  const allow = name && d1 && d2 && imageFile && price !== null;
+  const allow = name && d1 && d2 && images[0] && price !== null;
 
-  console.log(category);
-  console.log(subcategory);
+  const uploadImages = async (files: File[]) => {
+    const uploadedUrls: string[] = [];
 
-  const uploadImage = async (file: File) => {
-    const filePath = `products/${file.name}`; // Putanja u Storage-u
+    for (const file of files) {
+      const cleanedFileName = cleanFileName(file.name); // Očistimo naziv fajla
+      const filePath = `products/${cleanedFileName}`; // Putanja u Storage-u
 
-    const { error } = await supabase.storage
-      .from("images")
-      .upload(filePath, file);
+      const { error } = await supabase.storage
+        .from("images")
+        .upload(filePath, file);
 
-    if (error) {
-      console.error("Greška pri uploadu slike:", error);
-      return null;
+      if (error) {
+        console.error("Greška pri uploadu slike:", error);
+        continue; // Ako fail-uje, preskačemo tu sliku
+      }
+
+      // Dobijanje URL-a slike
+      const { data } = supabase.storage.from("images").getPublicUrl(filePath);
+      uploadedUrls.push(data.publicUrl);
     }
 
-    // Dobijanje URL-a slike
-    const { data } = supabase.storage.from("images").getPublicUrl(filePath);
-    return data.publicUrl; // Vraća tačan URL slike
+    return uploadedUrls; // Vraća niz URL-ova
   };
 
   const onSubmit = async () => {
@@ -72,15 +79,16 @@ const PartProductDetails: React.FC = () => {
     }
 
     // 1️⃣ Prvo uploadujemo sliku u Storage
-    if (!imageFile) {
-      console.error("No image selected");
+
+    if (!images || images.length === 0) {
+      console.error("❌ Nema izabranih slika.");
       return;
     }
 
-    const imageUrl = await uploadImage(imageFile);
-
-    if (!imageUrl) {
-      console.error("Greška: Slika nije uspešno sačuvana.");
+    // 1️⃣ Upload svih slika i dobijanje URL-ova
+    const imageUrls = await uploadImages(images);
+    if (imageUrls.length === 0) {
+      console.error("❌ Greška: Nijedna slika nije uspešno sačuvana.");
       return;
     }
 
@@ -93,12 +101,16 @@ const PartProductDetails: React.FC = () => {
       subcategory,
       regular_price: price,
       action_price: action,
-      image: imageUrl,
-      brand:selectBrand
+      images: imageUrls,
+      brand: selectBrand,
+      url: slugify(name),
     };
 
-    const { data, error } = await supabase.from("products").insert([product]).select("*")
-    .single();;
+    const { data, error } = await supabase
+      .from("products")
+      .insert([product])
+      .select("*")
+      .single();
 
     if (error) {
       console.error("Greška pri dodavanju proizvoda:", error);
@@ -111,21 +123,21 @@ const PartProductDetails: React.FC = () => {
         },
       });
     } else if (data) {
-          console.log("✅ Uspešno dodat proizvod:", data);
-      
-          // 5️⃣ Dodajemo novi proizvod u lokalni state da se odmah prikaže
-          setData((prev: Product[]) => [...prev, data]);
-      
-          setFeedback(true, {
-            title: "Uspešno dodat proizvod",
-            subtitle: "Proizvod je uspešno postavljen na bazu podataka.",
-            action: () => {
-              setFeedback(false);
-              setSelectScreen("AddNew");
-              resetState();
-            },
-          });
-        }
+      console.log("✅ Uspešno dodat proizvod:", data);
+
+      // 5️⃣ Dodajemo novi proizvod u lokalni state da se odmah prikaže
+      setData((prev: Product[]) => [...prev, data]);
+
+      setFeedback(true, {
+        title: "Uspešno dodat proizvod",
+        subtitle: "Proizvod je uspešno postavljen na bazu podataka.",
+        action: () => {
+          setFeedback(false);
+          setSelectScreen("AddNew");
+          resetState();
+        },
+      });
+    }
   };
 
   return (
@@ -149,7 +161,7 @@ const PartProductDetails: React.FC = () => {
           setD1={setD1}
           setD2={setD2}
         />
-        <RightContainer setImageFile={setImageFile} imageFile={imageFile} />
+        <RightContainer setImages={setImages} images={images} />
       </div>
 
       <NextButton
@@ -238,88 +250,17 @@ const LeftContainer: React.FC<LeftContainerProps> = ({
 };
 
 interface RightContainerProps {
-  imageFile: File | null;
-  setImageFile: (file: File | null) => void;
+  images: File[];
+  setImages: React.Dispatch<React.SetStateAction<File[]>>;
 }
 
 const RightContainer: React.FC<RightContainerProps> = ({
-  setImageFile,
-  imageFile,
+  images,
+  setImages,
 }) => {
-  const handleDeleteImage = () => {
-    setImageFile(null);
-  };
-
   return (
     <div className="w-[39%]">
-      <div className="rounded-lg p-4 bg-[#fcfcfc] h-[600px] mb-10">
-        <h2 className="text-[1.5rem]">Postavite sliku *</h2>
-
-        {/* Input koji će otvarati file picker */}
-        <input
-          type="file"
-          accept="image/*"
-          className="hidden"
-          id="fileInput"
-          onChange={(e) => {
-            if (e.target.files && e.target.files.length > 0) {
-              setImageFile(e.target.files[0]);
-            }
-          }}
-        />
-
-        {/* Ako slika ne postoji, prikazujemo label da može da se klikne */}
-        {!imageFile ? (
-          <label
-            htmlFor="fileInput"
-            className="h-[80%] w-[100%] mt-4 rounded-lg grid place-content-center bg-[#efefef] cursor-pointer overflow-hidden"
-          >
-            <CiCirclePlus size={100} color="green" />
-          </label>
-        ) : (
-          <div className="h-[80%] w-[100%] mt-4 rounded-lg relative overflow-hidden z-10">
-            <Image
-              src={URL.createObjectURL(imageFile)}
-              alt="Uploaded"
-              fill
-              style={{ objectFit: "cover" }}
-              className="rounded-lg z-10"
-            />
-          </div>
-        )}
-
-        {/* Dugme za brisanje slike */}
-        {imageFile ? (
-          <div
-            className="mt-6 flex gap-2 items-center cursor-pointer"
-            onClick={handleDeleteImage}
-          >
-            <MdDelete size={26} color="red" />
-            <p>Obrišite sliku</p>
-          </div>
-        ) : (
-          <div className="mt-6 flex gap-2 items-center cursor-pointer">
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              id="fileInput"
-              onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                  setImageFile(e.target.files[0]);
-                }
-              }}
-            />
-            <label
-              htmlFor="fileInput"
-              className="rounded-lg flex cursor-pointer overflow-hidden gap-2 items-center"
-            >
-              <CiCirclePlus size={26} color="green" />
-              <p>Dodajte sliku</p>
-            </label>
-          </div>
-        )}
-      </div>
+      <ImageGallery images={images} setImages={setImages} />
     </div>
   );
 };
