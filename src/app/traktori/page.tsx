@@ -7,7 +7,8 @@ import { meta, traktoriBrands } from "@/data";
 import { Metadata } from "next";
 
 export const metadata:Metadata = {
-  title:'Traktori'
+  title:'Traktori',
+  description:'Prodaja traktora brendova IMT, John Deere, Belarus, Solis, YTO, Mahindra, Carraro i Zetor. Veliki izbor novih i polovnih traktora za sve vrste poljoprivrednih potreba u Srbiji.'
 }
 
 

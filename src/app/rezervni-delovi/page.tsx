@@ -7,7 +7,8 @@ import { Metadata } from "next";
 
 
 export const metadata:Metadata = {
-  title:'Rezervni delovi'
+  title:'Rezervni delovi',
+  description: "Originalni i zamenski rezervni delovi za traktore i poljoprivredne mašine svih brendova – IMT, John Deere, Belarus, YTO, Zetor i drugi. Sve na jednom mestu – od motora do hidraulike. Brza isporuka širom Srbije."
 }
 
 export default function RezervniDelovi() {

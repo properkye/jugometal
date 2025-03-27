@@ -6,7 +6,9 @@ import { machinesCategories, meta } from "@/data";
 import { Metadata } from "next";
 
 export const metadata:Metadata = {
-  title:'Priključne mašine'
+  title:'Priključne mašine',
+  description: "Širok asortiman poljoprivrednih mašina: balirke, kosačice, sakupljači, utovarivači, freze, plugovi, sejalice, prskalice, rasipači, setvospremači, atomizeri, mulčari, prikolice, cisterne i rasturači. Kvalitetna mehanizacija za modernu poljoprivredu u Srbiji."
+
 }
 
 export default function PrikljucneMasine() {
