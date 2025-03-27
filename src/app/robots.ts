@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots{
             allow:"/",
             disallow:'/admin'
         },
-        sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`
+        sitemap: `https://jugometal.vercel.app/sitemap.xml`
     }
 }
