@@ -14,6 +14,35 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Metadata } from "next";
+
+// PROUCI OVO OVDE ZATO STO CE 2X DA VRACA ISTI FETCH ZBOG SEO-a
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ product: string }>;
+}): Promise<Metadata> {
+  const { product } = await params;
+
+  const { data, error } = await supabase
+    .from("products")
+    .select("name, description_one") // minimum
+    .eq("url", product)
+    .single();
+
+  if (error || !data) {
+    return {
+      title: "Proizvod – Jugometal Svilajnac",
+      description: "Detalji o proizvodu iz asortimana Jugometal Svilajnac.",
+    };
+  }
+
+  return {
+    title: `${data.name} – Jugometal Svilajnac`,
+    description:
+      data.description_one || "Detalji o proizvodu iz ponude Jugometal.",
+  };
+}
 
 export default async function Product({
   params,
@@ -21,7 +50,6 @@ export default async function Product({
   params: Promise<{ product: string; brand: string }>;
 }) {
   const { product, brand } = await params;
-
 
   if (!product) {
     return (
@@ -73,11 +101,12 @@ export default async function Product({
     "",
   ]) as [string, string];
 
-  const breadcategory = single.category === 'traktori' 
-  ? 'Traktori' 
-  : single.category === 'prikljucne-masine' 
-  ? 'Priključne mašine' 
-  : 'Rezervni Delovi';
+  const breadcategory =
+    single.category === "traktori"
+      ? "Traktori"
+      : single.category === "prikljucne-masine"
+      ? "Priključne mašine"
+      : "Rezervni Delovi";
 
   return (
     <FrontLayout>
@@ -91,11 +120,15 @@ export default async function Product({
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href={`/${single.category}`}>{breadcategory}</BreadcrumbLink>
+                  <BreadcrumbLink href={`/${single.category}`}>
+                    {breadcategory}
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href={`/${single.category}/${brand}`}>{brand}</BreadcrumbLink>
+                  <BreadcrumbLink href={`/${single.category}/${brand}`}>
+                    {brand}
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
@@ -173,7 +206,11 @@ interface ProductAboutProps {
   a2: string;
 }
 
-export const ProductAbout: React.FC<ProductAboutProps> = ({ title, a1, a2 }) => {
+export const ProductAbout: React.FC<ProductAboutProps> = ({
+  title,
+  a1,
+  a2,
+}) => {
   return (
     <div className="py-4 w-full md:w-[500px] lg:w-full">
       <h2 className="text-[30px] text-dark mb-8 tracking-[-0.03rem] font-semibold md:text-[36px] lg:text-[42px]">

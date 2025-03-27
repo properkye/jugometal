@@ -3,7 +3,7 @@ import { AdminContextProvider } from "@/context/adminContext";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Jugometal - Admin",
+    title: "Admin",
     description: "Jugometal traktori i poljoprivredne mašine",
   };
 
