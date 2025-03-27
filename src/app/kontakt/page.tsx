@@ -6,6 +6,11 @@ import AccordionSection from "@/components/frontend/AccordionSection";
 import { TractorAccordionProps } from "@/models/types";
 import { ProductQuestion } from "../traktori/[brand]/[product]/page";
 import ContactForm from "@/components/admin/screens/ContactForm";
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+  title:'Kontakt'
+}
 
 const accordion:TractorAccordionProps[] = [
   {

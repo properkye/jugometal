@@ -4,6 +4,11 @@ import CategoryItemBox from "@/components/frontend/CategoryItemBox";
 // import NavigationList from "@/components/frontend/NavigationList";
 import FrontLayout from "@/components/layouts/FrontLayout";
 import { meta, traktoriBrands } from "@/data";
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+  title:'Traktori'
+}
 
 
 export default function Traktori() {

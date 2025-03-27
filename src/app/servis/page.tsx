@@ -5,6 +5,11 @@ import EntrySection from "@/components/frontend/EntrySection";
 import AccordionSectionSecond from "@/components/frontend/AccordionSectionSecond";
 import ContactForm from "@/components/admin/screens/ContactForm";
 import { ProductQuestion } from "../traktori/[brand]/[product]/page";
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+  title:'Servis'
+}
 
 export interface AccordionProps {
   title: string;

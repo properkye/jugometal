@@ -6,7 +6,11 @@ import EntrySection from "@/components/frontend/EntrySection";
 import Partners from "@/components/frontend/Partners";
 import { AccordionProps } from "../servis/page";
 import AccordionSectionSecond from "@/components/frontend/AccordionSectionSecond";
+import { Metadata } from "next";
 
+export const metadata:Metadata = {
+  title:'O nama'
+}
 
 const accordion: AccordionProps[] = [
   {

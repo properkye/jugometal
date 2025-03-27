@@ -1,6 +1,11 @@
 import ProductsContainer from "@/components/frontend/ProductsContainer";
 import ProductsIntro from "@/components/frontend/ProductsIntro";
 import FrontLayout from "@/components/layouts/FrontLayout";
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+  title:'Akcije'
+}
 
 export default async function Akcije() {
     return (
