@@ -12,10 +12,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "Jugometal Svilajnac",
-//   description: "Jugometal traktori i poljoprivredne mašine",
-// };
 
 export const metadata: Metadata = {
   title: {
@@ -36,11 +32,11 @@ export const metadata: Metadata = {
     "Solis Traktori",
     "John Deere Srbija",
   ],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
+  metadataBase: new URL('https://jugometal.vercel.app/'),
   openGraph: {
     type: "website",
     locale: "sr-RS",
-    url: process.env.NEXT_PUBLIC_BASE_URL!,
+    url: 'https://jugometal.vercel.app/',
     title: "Jugometal – Traktori i Poljoprivredne Mašine",
     description:
       "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju.",
