@@ -4,6 +4,8 @@ import ProductsIntro from "@/components/frontend/ProductsIntro";
 import FrontLayout from "@/components/layouts/FrontLayout";
 import { supabase } from "@/lib/supabase";
 
+export const fetchCache = "force-no-store";
+
 export default async function BrandPage({
     params,
   }: {
