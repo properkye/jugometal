@@ -2,133 +2,134 @@ import FrontLayout from "@/components/layouts/FrontLayout";
 import CatBaner from "@/components/frontend/CatBaner";
 import { meta } from "@/data";
 import EntrySection from "@/components/frontend/EntrySection";
-import AccordionSection from "@/components/frontend/AccordionSection";
+
 import { TractorAccordionProps } from "@/models/types";
 import { ProductQuestion } from "../traktori/[brand]/[product]/page";
 import ContactForm from "@/components/admin/screens/ContactForm";
 import { Metadata } from "next";
+import AccordionLinks from "@/components/frontend/AccordionLinks";
 
 export const metadata:Metadata = {
   title:'Kontakt'
 }
 
-const accordion:TractorAccordionProps[] = [
+export const accordionData: TractorAccordionProps[] = [
   {
-    title:'Jugometal Svilajnac',
-    subtitle:'Servis i prodaja poljoprivredne mehanizacije u Svilajncu',
+    title: 'Jugometal Svilajnac',
+    subtitle: 'Servis i prodaja poljoprivredne mehanizacije u Svilajncu',
     items: [
       {
-        name:'Kontakt telefon',
+        name: 'Kontakt telefon',
         list: [
           {
-            itemName:'Delovi: 035/311-137',
-            itemHref:''
+            itemName: 'Delovi: 035/311-137',
+            itemHref: 'tel:035311137',
           },
           {
-            itemName:'Fax: 035/312-331',
-            itemHref:''
+            itemName: 'Fax: 035/312-331',
+            itemHref: 'tel:035312331',
           },
-        ]
+        ],
       },
       {
-        name:'Adresa',
+        name: 'Adresa',
         list: [
           {
-            itemName:'ul. Kneza Miloša 81 35210, Svilajnac Srbija',
-            itemHref:''
+            itemName: 'ul. Kneza Miloša 81 35210, Svilajnac Srbija',
+            itemHref: 'https://www.google.com/maps/search/?api=1&query=Kneza+Miloša+81+35210+Svilajnac+586423',
           },
-        ]
+        ],
       },
       {
-        name:'E-mejl',
+        name: 'E-mejl',
         list: [
           {
-            itemName:'info@jugometal.co.rs',
-            itemHref:''
+            itemName: 'info@jugometal.co.rs',
+            itemHref: 'mailto:info@jugometal.co.rs',
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   {
-    title:'Jugometal Temerin',
-    subtitle:'Servis i prodaja poljoprivredne mehanizacije u Temerinu',
+    title: 'Jugometal Temerin',
+    subtitle: 'Servis i prodaja poljoprivredne mehanizacije u Temerinu',
     items: [
       {
-        name:'Kontakt telefon',
+        name: 'Kontakt telefon',
         list: [
           {
-            itemName:'Telefon: 021/840-038',
-            itemHref:''
+            itemName: 'Telefon: 021/840-038',
+            itemHref: 'tel:021840038',
           },
           {
-            itemName:'Fax: 021/840-505',
-            itemHref:''
+            itemName: 'Fax: 021/840-505',
+            itemHref: 'tel:021840505',
           },
           {
-            itemName:'Mobilni: 063/10-58-705',
-            itemHref:''
+            itemName: 'Mobilni: 063/10-58-705',
+            itemHref: 'tel:0631058705',
           },
-        ]
+        ],
       },
       {
-        name:'Adresa',
+        name: 'Adresa',
         list: [
           {
-            itemName:'Novosadska 634 21235, Temerin Srbija',
-            itemHref:''
+            itemName: 'Novosadska 634 21235, Temerin Srbija',
+            itemHref: 'https://www.google.com/maps/search/?api=1&query=Novosadska+634+21235+Temerin',
           },
-        ]
+        ],
       },
       {
-        name:'E-mejl',
+        name: 'E-mejl',
         list: [
           {
-            itemName:'info@jugometal.co.rs',
-            itemHref:''
+            itemName: 'info@jugometal.co.rs',
+            itemHref: 'mailto:info@jugometal.co.rs',
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   {
-    title:'Jugometal Požarevac',
-    subtitle:'Servis i prodaja poljoprivredne mehanizacije u Požarevcu',
+    title: 'Jugometal Požarevac',
+    subtitle: 'Servis i prodaja poljoprivredne mehanizacije u Požarevcu',
     items: [
       {
-        name:'Kontakt telefon',
+        name: 'Kontakt telefon',
         list: [
           {
-            itemName:'Telefon: 012/665-544',
-            itemHref:''
+            itemName: 'Telefon: 012/665-544',
+            itemHref: 'tel:012665544',
           },
           {
-            itemName:'Mobilni: 063/10-58-762',
-            itemHref:''
+            itemName: 'Mobilni: 063/10-58-762',
+            itemHref: 'tel:0631058762',
           },
-        ]
+        ],
       },
       {
-        name:'Adresa',
+        name: 'Adresa',
         list: [
           {
-            itemName:'Beogradski put 17/A 12000, Požarevac',
-            itemHref:''
+            itemName: 'Beogradski put 17/A 12000, Požarevac',
+            itemHref: 'https://www.google.com/maps/search/?api=1&query=Beogradski+put+17A+12000+Požarevac',
           },
-        ]
+        ],
       },
       {
-        name:'E-mejl',
+        name: 'E-mejl',
         list: [
           {
-            itemName:'info@jugometal.co.rs',
-            itemHref:''
+            itemName: 'info@jugometal.co.rs',
+            itemHref: 'mailto:info@jugometal.co.rs',
           },
-        ]
-      }
-    ]
-  }
-]
+        ],
+      },
+    ],
+  },
+];
 
 export default function Kontakt() {
   return (
@@ -151,7 +152,7 @@ export default function Kontakt() {
           />
         </div>
 
-        <AccordionSection data={accordion} />
+        <AccordionLinks data={accordionData} />
       </div>
 
      

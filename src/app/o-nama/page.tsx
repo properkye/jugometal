@@ -1,16 +1,17 @@
 import FrontLayout from "@/components/layouts/FrontLayout";
 import CatBaner from "@/components/frontend/CatBaner";
-import { meta} from "@/data";
+import { meta } from "@/data";
 import EntrySection from "@/components/frontend/EntrySection";
 
 import Partners from "@/components/frontend/Partners";
 import { AccordionProps } from "../servis/page";
 import AccordionSectionSecond from "@/components/frontend/AccordionSectionSecond";
 import { Metadata } from "next";
+import Image from "next/image";
 
-export const metadata:Metadata = {
-  title:'O nama'
-}
+export const metadata: Metadata = {
+  title: "O nama",
+};
 
 const accordion: AccordionProps[] = [
   {
@@ -54,8 +55,13 @@ export default function ONama() {
         <AccordionSectionSecond data={accordion} />
       </div>
 
-      <div className="wrapper">
-        Slika firme
+      <div className="h-[500px] w-full relative">
+        <Image
+          src="/banners/firma.jpg"
+          alt="banner"
+          fill
+          className="object-cover"
+        />
       </div>
 
       <EntrySection
@@ -64,7 +70,6 @@ export default function ONama() {
         text="Izdvajamo iz ponude vrhunsku mehanizaciju koja kombinuje snagu, dugotrajnost i savremenu tehnologiju, obezbeđujući maksimalnu efikasnost i pouzdanost u radu."
         wrapper={true}
       />
-
 
       <Partners />
     </FrontLayout>

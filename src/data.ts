@@ -705,25 +705,7 @@ export const traktoriBrands:CategoryBoxProps[] = [
   },
 ]
 
-export const machinesCategories:CategoryBoxProps[] = [
-  {
-    alt:'Atomizeri Srbija, Atomizeri Jugometal, Atomizeri Agromenahika Kranj, Atomizeri Morava',
-    image:'/images/masine/atomizeri.jpg',
-    link:'/prikljucne-masine/atomizeri',
-    quantity:'Atomizeri'
-  },
-  {
-    alt:'Mulčari Srbija, Mulčari Jugometal, Mulcari Agromenahika FPM, Mulcari INO Brežice',
-    image:'/images/masine/mulcari.webp',
-    link:'/prikljucne-masine/mulcari',
-    quantity:'Mulčari'
-  },
-  {
-    alt:'Freze Srbija, Freze Jugometal, Freze Agromenahika FPM',
-    image:'/images/masine/freze.webp',
-    link:'/prikljucne-masine/freze',
-    quantity:'Freze'
-  },
+export const machinesCategories: CategoryBoxProps[] = [
   {
     alt:'Balirke Srbija, Balirke Jugometal, Balirke MetalFach, Balirke Ursus',
     image:'/images/masine/balirke.webp',
@@ -736,7 +718,12 @@ export const machinesCategories:CategoryBoxProps[] = [
     link:'/prikljucne-masine/kosacice',
     quantity:'Kosačice'
   },
-
+  {
+    alt:'Sakupljači Srbija, Sakupljači Jugometal, Sakupljaci, Sakupljači ',
+    image:'/images/masine/sakupljaci.webp',
+    link:'/prikljucne-masine/sakupljaci',
+    quantity:'Sakupljači'
+  },
   {
     alt:'Utovarivači Srbija, Utovarivači Jugometal, Utovarivaci, Utovarivači ',
     image:'/images/masine/utovarivaci.webp',
@@ -744,10 +731,10 @@ export const machinesCategories:CategoryBoxProps[] = [
     quantity:'Utovarivači'
   },
   {
-    alt:'Sakupljači Srbija, Sakupljači Jugometal, Sakupljaci, Sakupljači ',
-    image:'/images/masine/sakupljaci.webp',
-    link:'/prikljucne-masine/sakupljaci',
-    quantity:'Sakupljači'
+    alt:'Freze Srbija, Freze Jugometal, Freze Agromenahika FPM',
+    image:'/images/masine/freze.webp',
+    link:'/prikljucne-masine/freze',
+    quantity:'Freze'
   },
   {
     alt:'Plugovi Srbija, Plugovi Jugometal, Plugovi, Bell Impex ',
@@ -779,7 +766,38 @@ export const machinesCategories:CategoryBoxProps[] = [
     link:'/prikljucne-masine/setvospremaci',
     quantity:'Setvospremači'
   },
-]
+  {
+    alt:'Atomizeri Srbija, Atomizeri Jugometal, Atomizeri Agromenahika Kranj, Atomizeri Morava',
+    image:'/images/masine/atomizeri.jpg',
+    link:'/prikljucne-masine/atomizeri',
+    quantity:'Atomizeri'
+  },
+  {
+    alt:'Mulčari Srbija, Mulčari Jugometal, Mulcari Agromenahika FPM, Mulcari INO Brežice',
+    image:'/images/masine/mulcari.webp',
+    link:'/prikljucne-masine/mulcari',
+    quantity:'Mulčari'
+  },
+  {
+    alt:'Prikolice Srbija, Prikolice Jugometal, Prikolice',
+    image:'/images/masine/prikolice.webp',
+    link:'/prikljucne-masine/prikolice',
+    quantity:'Prikolice'
+  },
+  {
+    alt:'Cisterne Srbija, Cisterne Jugometal, Cisterne',
+    image:'/images/masine/cisterne.webp',
+    link:'/prikljucne-masine/cisterne',
+    quantity:'Cisterne'
+  },
+  {
+    alt:'Rasturači stajnaka Srbija, Rasturači stajnaka Jugometal, Rasturači stajnaka',
+    image:'/images/masine/rasturaci.webp',
+    link:'/prikljucne-masine/rasturaci',
+    quantity:'Rasturači'
+  },
+];
+
 
 export const deloviCategories:CategoryBoxProps[] = [
   {

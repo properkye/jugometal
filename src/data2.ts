@@ -33,7 +33,7 @@ export const brandLogo = (brand:string) => {
           return mahindra;
         case 'carraro':
           return carraro;
-        case 'čelmak':
+        case 'celmak':
           return celmak;
         case 'ursus':
           return ursus;
@@ -41,9 +41,9 @@ export const brandLogo = (brand:string) => {
           return yto;
         case 'belarus':
           return belarus;
-        case 'ino':
+        case 'ino-brezice':
           return ino;
-        case 'fpm':
+        case 'fpm-agromehanika':
           return fpm;
         case 'john-deere':
           return deere;
@@ -59,7 +59,7 @@ export const brandLogo = (brand:string) => {
           return majevica;
         case 'gorenc':
           return gorenc;
-        case 'gumaplast':
+        case 'gumaplast-rau':
           return gumaplast;
         case 'morava':
           return morava;

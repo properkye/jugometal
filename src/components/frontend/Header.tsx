@@ -31,7 +31,7 @@ const Header: React.FC = () => {
       <div className="wrapper md:flex md:justify-between md:items-center">
         {data.map((item) => (
             <a key={item.id} href={item.href}
-                className={`${item.showOnMobile ? 'block' : 'hidden'} md:block md:text-[.8rem] xl:text-[.9rem] `}
+                className={`hover:underline ${item.showOnMobile ? 'block' : 'hidden'} md:block md:text-[.8rem] xl:text-[.9rem] `}
                 target="_blank" rel="noreferrer"
             >
                 <span className="font-light">{item.question}</span>

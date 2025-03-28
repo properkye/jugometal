@@ -83,12 +83,16 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
         <Accordion type="single" collapsible className="w-full mt-10">
           {/* Traktori */}
           <AccordionItem value="traktori">
-            <AccordionTrigger>Traktori</AccordionTrigger>
+            <AccordionTrigger className="text-[1.5rem]">
+              Traktori
+            </AccordionTrigger>
             <AccordionContent>
               <ul>
                 {tractors.map((tractor) => (
                   <li key={tractor.name} className="py-2">
-                    <Link href={tractor.href}>{tractor.name}</Link>
+                    <Link href={tractor.href} className="hover:underline">
+                      {tractor.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -97,12 +101,16 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
 
           {/* Priključne mašine */}
           <AccordionItem value="prikljucne-masine">
-            <AccordionTrigger>Priključne mašine</AccordionTrigger>
+            <AccordionTrigger className="text-[1.5rem]">
+              Priključne mašine
+            </AccordionTrigger>
             <AccordionContent>
               <ul>
                 {prikljucneMasine.map((item) => (
                   <li key={item.name} className="py-2">
-                    <Link href={item.href}>{item.name}</Link>
+                    <Link href={item.href} className="hover:underline">
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -111,12 +119,16 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
 
           {/* Rezervni delovi */}
           <AccordionItem value="rezervni-delovi">
-            <AccordionTrigger>Rezervni delovi</AccordionTrigger>
+            <AccordionTrigger className="text-[1.5rem]">
+              Rezervni delovi
+            </AccordionTrigger>
             <AccordionContent>
               <ul>
                 {rezervniDelovi.map((item) => (
                   <li key={item.name} className="py-2">
-                    <Link href={item.href}>{item.name}</Link>
+                    <Link href={item.href} className="hover:underline">
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -126,30 +138,50 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
 
         {/* Statika */}
         <ul className="mt-10">
-          <li className="py-2">
+          <li className="py-2 text-[1.5rem]">
             <Link href="/">Početna</Link>
           </li>
-          <li className="py-2">
+          <li className="py-2 text-[1.5rem]">
             <Link href="/o-nama">O nama</Link>
           </li>
-          <li className="py-2">
+          <li className="py-2 text-[1.5rem]">
             <Link href="/kontakt">Kontakt</Link>
           </li>
-          <li className="py-2">
+          <li className="py-2 text-[1.5rem]">
             <Link href="/servis">Servis</Link>
           </li>
-          <li className="py-2">
+          <li className="py-2 text-[1.5rem]">
             <Link href="/subvencije">Subvencije</Link>
           </li>
-          <li className="py-2">
+          <li className="py-2 text-[1.5rem]">
             <Link href="/akcije">Akcije</Link>
           </li>
         </ul>
 
         <ul className="mt-10">
-          <li className="py-2">Telefon: 035/312-391</li>
-          <li className="py-2">E-mejl: info@jugometal.co.rs</li>
-          <li className="py-2">Adresa: Kneza Miloša 51, 35210</li>
+          <li className="py-2 text-[1rem]">
+            Telefon:{" "}
+            <a href="tel:035312391" className="hover:underline">
+              035/312-391
+            </a>
+          </li>
+          <li className="py-2 text-[1rem]">
+            E-mejl:{" "}
+            <a href="mailto:info@jugometal.co.rs" className="hover:underline">
+              info@jugometal.co.rs
+            </a>
+          </li>
+          <li className="py-2 text-[1rem]">
+            Adresa:{" "}
+            <a
+              href="https://www.google.com/maps/place/JUGOMETAL+d.o.o.+Svilajnac/@44.2320431,21.1865375,16z/data=!4m6!3m5!1s0x47512aebab5d1887:0xf407f690f9310426!8m2!3d44.2286941!4d21.1757255!16s%2Fg%2F1hc14d76j?entry=ttu&g_ep=EgoyMDI1MDMyNC4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Kneza Miloša 81, 35210, Svilajnac 586423
+            </a>
+          </li>
         </ul>
       </div>
     </motion.aside>

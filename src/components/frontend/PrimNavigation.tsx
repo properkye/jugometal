@@ -46,7 +46,7 @@ const PrimNavigation: React.FC = () => {
     <div className="hidden xl:flex wrapper xl:justify-between py-6">
       {items.map((item, i) => (
         <Link href={`/${item.url}`} key={i}>
-          <li className="list-none text-[1.2rem] tracking-tight cursor-pointer">
+          <li className="list-none text-[1.2rem] tracking-tight cursor-pointer hover:underline">
             {item.title}
           </li>
         </Link>
