@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 export interface EmailData {
   name: string;
@@ -13,9 +13,9 @@ export interface EmailResponse {
   message: string;
 }
 
-export const sendEmail = async (data: EmailData): Promise<EmailResponse> => {
+export const sendEmail = async (): Promise<EmailResponse> => {
   try {
-    await axios.post('/api/order', { data });
+    // await axios.post('/api/order', { data });
 
     return { message: 'Email uspešno poslat.' };
   } catch (error) {
