@@ -54,14 +54,14 @@ const prikljucneMasine = [
     .replace(/\s+/g, "-")}`,
 }));
 
-const rezervniDelovi = [
-  { name: "Traktorski delovi", href: "/rezervni-delovi/traktorski" },
-  {
-    name: "Delovi za priključne mašine",
-    href: "/rezervni-delovi/prikljucne-masine",
-  },
-  { name: "Ostalo", href: "/rezervni-delovi/ostalo" },
-];
+// const rezervniDelovi = [
+//   { name: "Traktorski delovi", href: "/rezervni-delovi/traktorski" },
+//   {
+//     name: "Delovi za priključne mašine",
+//     href: "/rezervni-delovi/prikljucne-masine",
+//   },
+//   { name: "Ostalo", href: "/rezervni-delovi/ostalo" },
+// ];
 
 const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
   return (
@@ -90,7 +90,7 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
               <ul>
                 {tractors.map((tractor) => (
                   <li key={tractor.name} className="py-2">
-                    <Link href={tractor.href} className="hover:underline">
+                    <Link href={tractor.href} className="hover:underline lg:text-[1.2rem]">
                       {tractor.name}
                     </Link>
                   </li>
@@ -108,7 +108,7 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
               <ul>
                 {prikljucneMasine.map((item) => (
                   <li key={item.name} className="py-2">
-                    <Link href={item.href} className="hover:underline">
+                    <Link href={item.href} className="hover:underline lg:text-[1.2rem]">
                       {item.name}
                     </Link>
                   </li>
@@ -118,7 +118,7 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
           </AccordionItem>
 
           {/* Rezervni delovi */}
-          <AccordionItem value="rezervni-delovi">
+          {/* <AccordionItem value="rezervni-delovi">
             <AccordionTrigger className="text-[1.5rem]">
               Rezervni delovi
             </AccordionTrigger>
@@ -133,7 +133,7 @@ const Sidemenu: React.FC<SidemenuProps> = ({ setOpen }) => {
                 ))}
               </ul>
             </AccordionContent>
-          </AccordionItem>
+          </AccordionItem> */}
         </Accordion>
 
         {/* Statika */}

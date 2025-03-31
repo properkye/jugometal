@@ -169,11 +169,11 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "IMT 539.2 DI",
-            itemHref: "/traktori/imt/imt-539-2-di",
+            itemHref: "/traktori/imt/imt-5392-di",
           },
           {
             itemName: "IMT 539.3 DI",
-            itemHref: "/traktori/imt/imt-539-3-di",
+            itemHref: "/traktori/imt/imt-5393-di",
           },
         ],
       },
@@ -182,7 +182,7 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "IMT 549.3 DI",
-            itemHref: "/traktori/imt/imt-549-3-di",
+            itemHref: "/traktori/imt/imt-5493-di",
           },
         ],
       },
@@ -191,7 +191,7 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "IMT 565.2 DI",
-            itemHref: "/traktori/imt/imt-565-2-di",
+            itemHref: "/traktori/imt/imt-5652-di",
           },
         ],
       },
@@ -209,7 +209,7 @@ export const tractorAccordion: TractorAccordionProps[] = [
             itemHref: "/traktori/yto/yto-354",
           },
           {
-            itemName: "IMT 504",
+            itemName: "YTO 504",
             itemHref: "/traktori/yto/yto-504",
           },
         ],
@@ -219,19 +219,19 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "YTO X804",
-            itemHref: "/traktori/yto/yto-x-804",
+            itemHref: "/traktori/yto/yto-x804",
           },
           {
             itemName: "YTO X904",
-            itemHref: "/traktori/yto/yto-x-904",
+            itemHref: "/traktori/yto/yto-x904",
           },
           {
             itemName: "YTO X1204",
-            itemHref: "/traktori/yto/yto-x-1204",
+            itemHref: "/traktori/yto/yto-x1204",
           },
           {
             itemName: "YTO X1304",
-            itemHref: "/traktori/yto/yto-x-1304",
+            itemHref: "/traktori/yto/yto-x1304",
           },
         ],
       },
@@ -247,19 +247,19 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "Belarus 952",
-            itemHref: "/traktori/belarus/belarus-952",
+            itemHref: "/traktori/belarus/952",
           },
           {
             itemName: "Belarus 82.1",
-            itemHref: "/traktori/belarus/belarus-82-1",
+            itemHref: "/traktori/belarus/821",
           },
           {
             itemName: "Belarus 1021.3",
-            itemHref: "/traktori/belarus/belarus-1021-3",
+            itemHref: "/traktori/belarus/10213",
           },
           {
             itemName: "Belarus 1221.3",
-            itemHref: "/traktori/belarus/belarus-1221-3",
+            itemHref: "/traktori/belarus/12213",
           },
         ],
       },
@@ -268,11 +268,11 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "Belarus 820 RM",
-            itemHref: "/traktori/belarus/belarus-820-rm",
+            itemHref: "/traktori/belarus/820-rm",
           },
           {
             itemName: "Belarus 892 RM",
-            itemHref: "/traktori/belarus/belarus-892-rm",
+            itemHref: "/traktori/belarus/892-rm",
           },
         ],
       },
@@ -288,7 +288,7 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "John Deere 5075M",
-            itemHref: "/traktori/john-deere/john-deere-5075-m",
+            itemHref: "/traktori/john-deere/5075m",
           },
         ],
       },
@@ -297,7 +297,7 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
             {
                 itemName: "John Deere 5045D",
-                itemHref: "/traktori/john-deere/john-deere-5045-d",
+                itemHref: "/traktori/john-deere/5045-d",
               },
         ],
       },
@@ -313,53 +313,53 @@ export const tractorAccordion: TractorAccordionProps[] = [
         list: [
           {
             itemName: "7030 DI",
-            itemHref: "/traktori/mahindra/mahindra-7030-di",
+            itemHref: "/traktori/mahindra/7030-di",
           },
           {
             itemName: "595 DI TURBO MKM",
-            itemHref: "/traktori/mahindra/mahindra-595-di-turbo-mkm",
+            itemHref: "/traktori/mahindra/595-di-turbo-mkm",
           },
           {
             itemName: "475 DI MKM",
-            itemHref: "/traktori/mahindra/mahindra-475-di-mkm",
+            itemHref: "/traktori/mahindra/475-di-mkm",
           },
         ],
       },
     ],
   },
-  {
-    title: "Zetor",
-    subtitle:
-      "Zetor traktori serije Proxima Power i Major kombinuju robusnu konstrukciju, pouzdanu snagu i naprednu tehnologiju, pružajući visoku efikasnost i dugotrajnost u radu.",
-    items: [
-      {
-        name: "Proxima Power",
-        list: [
-          {
-            itemName: "Proxima Power 80",
-            itemHref: "/traktori/zetor/proxima-power-80",
-          },
-          {
-            itemName: "Proxima Power 100",
-            itemHref: "/traktori/zetor/proxima-power-100",
-          },
-          {
-            itemName: "Proxima Power 120",
-            itemHref: "/traktori/zetor/proxima-power-120",
-          },
-        ],
-      },
-      {
-        name: "Major Zetor",
-        list: [
-          {
-            itemName: "Major 80",
-            itemHref: "/traktori/zetor/major-80",
-          }
-        ],
-      },
-    ],
-  },
+  // {
+  //   title: "Zetor",
+  //   subtitle:
+  //     "Zetor traktori serije Proxima Power i Major kombinuju robusnu konstrukciju, pouzdanu snagu i naprednu tehnologiju, pružajući visoku efikasnost i dugotrajnost u radu.",
+  //   items: [
+  //     {
+  //       name: "Proxima Power",
+  //       list: [
+  //         {
+  //           itemName: "Proxima Power 80",
+  //           itemHref: "/traktori/zetor/proxima-power-80",
+  //         },
+  //         {
+  //           itemName: "Proxima Power 100",
+  //           itemHref: "/traktori/zetor/proxima-power-100",
+  //         },
+  //         {
+  //           itemName: "Proxima Power 120",
+  //           itemHref: "/traktori/zetor/proxima-power-120",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       name: "Major Zetor",
+  //       list: [
+  //         {
+  //           itemName: "Major 80",
+  //           itemHref: "/traktori/zetor/major-80",
+  //         }
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     title: "Carraro",
     subtitle:
@@ -377,12 +377,8 @@ export const tractorAccordion: TractorAccordionProps[] = [
             itemHref: "/traktori/carraro/agricube-vigneto",
           },
           {
-            itemName: "Agricube Basso 80FB",
-            itemHref: "/traktori/carraro/agricube-basso-80fb",
-          },
-          {
-            itemName: "Agricube Basso 90FB",
-            itemHref: "/traktori/carraro/agricube-basso-90fb",
+            itemName: "Agricube Basso 80-90FB",
+            itemHref: "/traktori/carraro/basso-80fb-90fb",
           },
         ],
       },
