@@ -1,12 +1,82 @@
 "use client";
+
 import React, { useState } from "react";
+import { sendEmail } from "@/config/sendMail"; // pretpostavljam da već imaš ovo
 
 const ContactForm: React.FC = () => {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [num, setNum] = useState("");
-  const [adress, setAdress] = useState("");
+  const [information, setInformation] = useState({
+    name: { value: "", isValid: true },
+    surname: { value: "", isValid: true },
+    email: { value: "", isValid: true },
+    phone: { value: "", isValid: true },
+    adresa: { value: "", isValid: true },
+  });
+
+  const inputHandler = (
+    identifier: keyof typeof information,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const val = event.target.value;
+
+    setInformation((prev) => ({
+      ...prev,
+      [identifier]: { value: val, isValid: true },
+    }));
+  };
+
+  const resetInformation = () => {
+    setInformation({
+      name: { value: "", isValid: true },
+      surname: { value: "", isValid: true },
+      email: { value: "", isValid: true },
+      phone: { value: "", isValid: true },
+      adresa: { value: "", isValid: true },
+    });
+  };
+
+  const handleSubmit = async () => {
+    const nameIsValid = information.name.value.trim().length > 0;
+    const surnameIsValid = information.surname.value.trim().length > 0;
+    const emailIsValid =
+      information.email.value.trim().length > 0 &&
+      information.email.value.includes("@");
+    const phoneIsValid = information.phone.value.trim().length > 0;
+    const adresaIsValid = information.adresa.value.trim().length > 0;
+
+    if (
+      !nameIsValid ||
+      !surnameIsValid ||
+      !emailIsValid ||
+      !phoneIsValid ||
+      !adresaIsValid
+    ) {
+      setInformation((prev) => ({
+        name: { value: prev.name.value, isValid: nameIsValid },
+        surname: { value: prev.surname.value, isValid: surnameIsValid },
+        email: { value: prev.email.value, isValid: emailIsValid },
+        phone: { value: prev.phone.value, isValid: phoneIsValid },
+        adresa: { value: prev.adresa.value, isValid: adresaIsValid },
+      }));
+      return;
+    }
+
+    const formData = {
+      name: information.name.value,
+      surname: information.surname.value,
+      email: information.email.value,
+      phone: information.phone.value,
+      adresa: information.adresa.value,
+      message: "Poruka sa kontakt forme",
+    };
+
+    try {
+      await sendEmail(formData);
+      alert("Poruka uspešno poslata!");
+      resetInformation();
+    } catch (error) {
+      console.error("Greška pri slanju mejla:", error);
+    }
+  };
 
   return (
     <div className="my-20">
@@ -17,22 +87,36 @@ const ContactForm: React.FC = () => {
         Popunite formu informacijama kako biste poslali svoje podatke.
       </p>
       <div className="mt-10 md:grid md:grid-cols-2 md:justify-between md:gap-10">
-        <FormInput value={name} placeholder={"Ime"} onChange={setName} />
         <FormInput
-          value={surname}
-          placeholder={"Prezime"}
-          onChange={setSurname}
+          placeholder="Ime"
+          value={information.name.value}
+          onChange={(e) => inputHandler("name", e)}
+          isValid={information.name.isValid}
         />
         <FormInput
-          value={email}
-          placeholder={"E-mejl adresa"}
-          onChange={setEmail}
+          placeholder="Prezime"
+          value={information.surname.value}
+          onChange={(e) => inputHandler("surname", e)}
+          isValid={information.surname.isValid}
         />
-        <FormInput value={num} placeholder={"Telefon"} onChange={setNum} />
         <FormInput
-          value={adress}
-          placeholder={"Adresa i poštanski broj"}
-          onChange={setAdress}
+          placeholder="E-mejl adresa"
+          value={information.email.value}
+          onChange={(e) => inputHandler("email", e)}
+          isValid={information.email.isValid}
+          type="email"
+        />
+        <FormInput
+          placeholder="Telefon"
+          value={information.phone.value}
+          onChange={(e) => inputHandler("phone", e)}
+          isValid={information.phone.isValid}
+        />
+        <FormInput
+          placeholder="Adresa i poštanski broj"
+          value={information.adresa.value}
+          onChange={(e) => inputHandler("adresa", e)}
+          isValid={information.adresa.isValid}
         />
       </div>
 
@@ -40,10 +124,10 @@ const ContactForm: React.FC = () => {
         Sva polja moraju biti popunjena *
       </span>
       <button
-        onClick={() => console.log("Odradi feedback i ovde")}
+        onClick={handleSubmit}
         className="border border-black py-2 px-20 transition duration-300 hover:bg-black hover:text-white rounded-md"
       >
-        Posaljite
+        Pošaljite
       </button>
     </div>
   );
@@ -54,21 +138,26 @@ export default ContactForm;
 interface FormInputProps {
   placeholder: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isValid: boolean;
+  type?: string;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
   placeholder,
-  onChange,
   value,
+  onChange,
+  isValid,
+  type = "text",
 }) => {
   return (
     <input
-      type="text"
-      className="block w-full mb-12 border-0 border-b border-gray-300 py-2 text-[1.6rem] outline-none text-gray-800 tracking-[-0.5px] transition-all duration-400 ease-in-out"
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
+      type={type}
       value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      className={`block w-full mb-12 border-0 border-b py-2 text-[1.6rem] outline-none tracking-[-0.5px] transition-all duration-400 ease-in-out
+        ${isValid ? "border-gray-300 text-gray-800" : "border-red-500 text-red-500"}`}
     />
   );
 };

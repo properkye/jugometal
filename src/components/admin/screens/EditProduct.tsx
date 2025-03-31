@@ -17,8 +17,6 @@ const EditProduct: React.FC = () => {
   const { setSelectScreen, from, product, setFeedback, setData } =
     useAdminContext();
 
-  console.log(product);
-
   const [changeName, setChangeName] = useState(product?.name ?? "");
   const [changeD1, setChangeD1] = useState(product?.description_one ?? "");
   const [changeD2, setChangeD2] = useState(product?.description_two ?? "");
@@ -46,75 +44,77 @@ const EditProduct: React.FC = () => {
     changeF5 !== (product?.features?.[4] ?? "") ||
     changeF6 !== (product?.features?.[5] ?? "");
 
-    const deleteProduct = async () => {
-      if (!product?.id || !product?.images || product.images.length === 0) {
-        console.error("Greška: Nedostaje ID proizvoda ili slike.");
-        return;
-      }
-    
-      try {
-        const storagePrefix =
-          "https://hbimjllhujrqysckvtkw.supabase.co/storage/v1/object/public/";
-    
-        // 1️⃣ Brisanje svih slika iz Storage-a
-        const imagePaths = product.images
-          .map((imageUrl) => {
-            if (!imageUrl.startsWith(storagePrefix)) {
-              console.error("Greška: URL slike nije validan.", imageUrl);
-              return null;
-            }
-            return imageUrl.replace(storagePrefix, ""); // Uklanja nepotreban deo URL-a
-          })
-          .filter((path): path is string => !!path); // 🚀 Osiguravamo da `path` nije `null`
-    
-        if (imagePaths.length > 0) {
-          const firstImagePath = imagePaths[0]; // Uzmi prvi validan path za bucket name
-          if (!firstImagePath) {
-            console.error("❌ Greška: Ne može se dobiti naziv bucket-a.");
-            return;
+  const deleteProduct = async () => {
+    if (!product?.id || !product?.images || product.images.length === 0) {
+      console.error("Greška: Nedostaje ID proizvoda ili slike.");
+      return;
+    }
+
+    try {
+      const storagePrefix =
+        "https://hbimjllhujrqysckvtkw.supabase.co/storage/v1/object/public/";
+
+      // 1️⃣ Brisanje svih slika iz Storage-a
+      const imagePaths = product.images
+        .map((imageUrl) => {
+          if (!imageUrl.startsWith(storagePrefix)) {
+            console.error("Greška: URL slike nije validan.", imageUrl);
+            return null;
           }
-    
-          const bucketName = firstImagePath.split("/")[0]; // Uzimamo bucket name (isti za sve slike)
-          const filePaths = imagePaths.map((path) => path.substring(bucketName.length + 1)); // Uklanjamo bucket iz putanje
-    
-          const { error: storageError } = await supabase.storage.from(bucketName).remove(filePaths);
-    
-          if (storageError) {
-            console.error("❌ Greška pri brisanju slika:", storageError.message);
-          } else {
-            console.log("✅ Sve slike su uspešno obrisane iz Storage-a!");
-          }
+          return imageUrl.replace(storagePrefix, ""); // Uklanja nepotreban deo URL-a
+        })
+        .filter((path): path is string => !!path); // 🚀 Osiguravamo da `path` nije `null`
+
+      if (imagePaths.length > 0) {
+        const firstImagePath = imagePaths[0]; // Uzmi prvi validan path za bucket name
+        if (!firstImagePath) {
+          console.error("❌ Greška: Ne može se dobiti naziv bucket-a.");
+          return;
         }
-    
-        // 2️⃣ Brisanje proizvoda iz baze
-        const { error: dbError } = await supabase
-          .from("products")
-          .delete()
-          .match({ id: product.id });
-    
-        if (dbError) {
-          console.error("❌ Greška pri brisanju proizvoda:", dbError.message);
+
+        const bucketName = firstImagePath.split("/")[0]; // Uzimamo bucket name (isti za sve slike)
+        const filePaths = imagePaths.map((path) =>
+          path.substring(bucketName.length + 1)
+        ); // Uklanjamo bucket iz putanje
+
+        const { error: storageError } = await supabase.storage
+          .from(bucketName)
+          .remove(filePaths);
+
+        if (storageError) {
+          console.error("❌ Greška pri brisanju slika:", storageError.message);
         } else {
-          console.log("✅ Proizvod uspešno obrisan!");
-    
-          // 3️⃣ Brišemo proizvod iz lokalnog state-a
-          setData((prev: Product[]) => prev.filter((p) => p.id !== product.id));
-    
-          setFeedback(true, {
-            title: "Proizvod uspešno obrisan.",
-            subtitle: "Uspešno ste izbrisali proizvod iz baze i storage-a.",
-            action: () => {
-              setFeedback(false);
-              setSelectScreen("traktori-list");
-            },
-          });
+          console.log("✅ Sve slike su uspešno obrisane iz Storage-a!");
         }
-      } catch (error) {
-        console.error("❌ Neočekivana greška:", error);
       }
-    };
-    
-    
+
+      // 2️⃣ Brisanje proizvoda iz baze
+      const { error: dbError } = await supabase
+        .from("products")
+        .delete()
+        .match({ id: product.id });
+
+      if (dbError) {
+        console.error("❌ Greška pri brisanju proizvoda:", dbError.message);
+      } else {
+        console.log("✅ Proizvod uspešno obrisan!");
+
+        // 3️⃣ Brišemo proizvod iz lokalnog state-a
+        setData((prev: Product[]) => prev.filter((p) => p.id !== product.id));
+
+        setFeedback(true, {
+          title: "Proizvod uspešno obrisan.",
+          subtitle: "Uspešno ste izbrisali proizvod iz baze i storage-a.",
+          action: () => {
+            setFeedback(false);
+            setSelectScreen("traktori-list");
+          },
+        });
+      }
+    } catch (error) {
+      console.error("❌ Neočekivana greška:", error);
+    }
+  };
 
   const editProduct = async () => {
     if (!isChanged) return; // Ako nema promena, ne radi ništa
@@ -189,7 +189,10 @@ const EditProduct: React.FC = () => {
           setF6={setChangeF6}
           category={product?.category}
         />
-        <RightContainerEdit images={product?.images ?? []} />
+        <RightContainerEdit
+          images={product?.images ?? []}
+          pdf={product?.pdf_file}
+        />
       </div>
 
       {isChanged ? (
@@ -370,6 +373,7 @@ const LeftContainerEdit: React.FC<LeftContainerProps> = ({
 
 interface RightContainerProps {
   images: string[];
+  pdf: string | undefined | null;
 }
 
 const RightContainerEdit: React.FC<RightContainerProps> = ({ images }) => {
@@ -400,6 +404,38 @@ const RightContainerEdit: React.FC<RightContainerProps> = ({ images }) => {
           ))}
         </div>
       </div>
+{/* 
+      <div className="rounded-lg p-4 bg-[#fcfcfc] h-fit">
+        <h2 className="text-[1.5rem]">Ubacite PDF fajl</h2>
+        <input
+          type="file"
+          accept="application/pdf"
+          onChange={handlePdfChange}
+          className="mt-2 p-2 border rounded-lg w-full"
+        />
+        {pdf && (
+          <div>
+  
+            <a
+              href="https://fyxbkkxntodbrhkzutxk.supabase.co/storage/v1/object/public/pdfs/products/lukanesic.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="border border-black w-full py-4 rounded-lg bg-gray-600 text-white hover:bg-black transition-all duration-300">
+                Pogledajte pdf file
+              </button>
+            </a>
+
+  
+            <button
+              className="mt-4 w-full py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-300"
+              onClick={() => console.log("Brisanje PDF-a")}
+            >
+              Izbrišite PDF file
+            </button>
+          </div>
+        )}
+      </div> */}
     </div>
   );
 };

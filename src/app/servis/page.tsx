@@ -3,7 +3,7 @@ import CatBaner from "@/components/frontend/CatBaner";
 import { meta } from "@/data";
 import EntrySection from "@/components/frontend/EntrySection";
 import AccordionSectionSecond from "@/components/frontend/AccordionSectionSecond";
-import ContactForm from "@/components/admin/screens/ContactForm";
+// import ContactForm from "@/components/admin/screens/ContactForm"; 
 import { ProductQuestion } from "../traktori/[brand]/[product]/page";
 import { Metadata } from "next";
 
@@ -60,7 +60,7 @@ export default function Servis() {
 
       <div className="wrapper">
         <ProductQuestion />
-        <ContactForm />
+        {/* <ContactForm /> */}
       </div>
     </FrontLayout>
   );

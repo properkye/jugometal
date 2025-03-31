@@ -13,7 +13,7 @@ export default function Subvencije() {
     <FrontLayout>
       <CatBaner
         title="Subvencioni programi."
-        subtitle="Vidi sta treba ovde da se s tavi."
+        subtitle="Kontaktirajte nas za više informacija."
         alt={meta}
         imgSrc="/banners/subv.jpg"
         href="/prikljucne-masine"

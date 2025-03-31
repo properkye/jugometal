@@ -3,7 +3,7 @@ import CatBaner from "@/components/frontend/CatBaner";
 import { accordionData, meta } from "@/data";
 import EntrySection from "@/components/frontend/EntrySection";
 import { ProductQuestion } from "../traktori/[brand]/[product]/page";
-import ContactForm from "@/components/admin/screens/ContactForm";
+// import ContactForm from "@/components/admin/screens/ContactForm";
 import { Metadata } from "next";
 import AccordionLinks from "@/components/frontend/AccordionLinks";
 
@@ -39,7 +39,7 @@ export default function Kontakt() {
      
       <div className="wrapper">
         <ProductQuestion />
-        <ContactForm />
+        {/* <ContactForm /> */}
       </div>
     </FrontLayout>
   );

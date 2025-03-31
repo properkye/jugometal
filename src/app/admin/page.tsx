@@ -14,3 +14,17 @@ export default function Admin() {
        </AdminContextProvider>
     )
 }
+
+// import { useEffect } from 'react';
+// import { useRouter } from 'next/navigation'; // Koristi useRouter za preusmeravanje
+
+// export default function Admin() {
+//   const router = useRouter();
+
+//   useEffect(() => {
+//     // Ako želite da svi koji pokušaju da uđu u admin budu preusmereni na login
+//     router.push('/login');  // Ovdje stavljamo URL za login stranicu
+//   }, [router]); // useEffect će se pozvati samo jednom kada se komponenta učita
+
+//   return null; // Nema potrebe za renderovanjem ničega
+// }

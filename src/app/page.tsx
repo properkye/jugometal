@@ -10,8 +10,8 @@ import {
   landingBaner,
   masineAccordion,
   meta,
-  rezervniAccordion,
-  rezervniBaner,
+  // rezervniAccordion,
+  // rezervniBaner,
   tractorAccordion,
   tractorSection,
 } from "@/data";
@@ -74,7 +74,7 @@ export default async function Home() {
         <AccordionSection data={masineAccordion} />
       </div>
 
-      <CarouselContainer items={rezervniBaner} />
+      {/* <CarouselContainer items={rezervniBaner} />
 
       <div className="wrapper xl:grid xl:grid-cols-2 xl:gap-10 xl:py-20 xl:justify-between">
         <div>
@@ -87,7 +87,7 @@ export default async function Home() {
         </div>
 
         <AccordionSection data={rezervniAccordion} />
-      </div>
+      </div> */}
 
       <EntrySection
         title="Partneri"

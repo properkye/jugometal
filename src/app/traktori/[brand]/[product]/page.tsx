@@ -1,10 +1,10 @@
-import ContactForm from "@/components/admin/screens/ContactForm";
 import FrontLayout from "@/components/layouts/FrontLayout";
 import { brandLogo } from "@/data2";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import { FaArrowsAlt } from "react-icons/fa";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
+// import ContactForm from "@/components/admin/screens/ContactForm";
 
 import {
   Breadcrumb,
@@ -166,11 +166,26 @@ export default async function Product({
                 bot5={b5}
                 bot6={b6}
               />
+
+              {single.pdf_file !== null && (
+                <div className="my-10">
+                  {/* Dugme za otvaranje PDF-a */}
+                  <a
+                    href={single.pdf_file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="w-full py-4 rounded-lg bg-gray-700 text-white hover:bg-black transition-all duration-300">
+                      Tehničke karakteristike
+                    </button>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
 
           <ProductQuestion />
-          <ContactForm />
+          {/* <ContactForm /> */}
         </div>
       </div>
     </FrontLayout>
@@ -292,7 +307,7 @@ export const ProductAspects: React.FC<ProductAspectsProps> = ({
 
 export const ProductQuestion: React.FC = () => {
   return (
-    <div className="mt-[5rem]">
+    <div className="mt-[5rem] mb-[5rem]">
       <h4 className="text-[1.5rem] tracking-[-0.5px] mb-4 text-dark md:text-[1.8rem] lg:text-[1.8rem] xl:text-[1.8rem] 2xl:text-[2rem]">
         Imate pitanje vezano za proizvod?
       </h4>

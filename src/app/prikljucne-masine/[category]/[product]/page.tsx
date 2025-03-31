@@ -1,5 +1,5 @@
 import { ProductAbout, ProductAspects, ProductImage, ProductQuestion } from "@/app/traktori/[brand]/[product]/page";
-import ContactForm from "@/components/admin/screens/ContactForm";
+// import ContactForm from "@/components/admin/screens/ContactForm"; 
 import FrontLayout from "@/components/layouts/FrontLayout";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { brandLogo } from "@/data2";
@@ -132,7 +132,7 @@ export default async function Product({
             </div>
   
             <ProductQuestion />
-            <ContactForm />
+            {/* <ContactForm /> */}
           </div>
         </div>
       </FrontLayout>
