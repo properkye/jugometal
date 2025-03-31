@@ -17,6 +17,8 @@ import {
 } from "@/data";
 import { supabase } from "@/lib/supabase";
 
+export const fetchCache = "force-no-store";
+
 export default async function Home() {
   const { data: products } = await supabase
     .from("products")
