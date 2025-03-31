@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { sendEmail } from "@/config/sendMail"; // pretpostavljam da već imaš ovo
+// import { sendEmail } from "@/config/sendMail"; // pretpostavljam da već imaš ovo
 
 const ContactForm: React.FC = () => {
   const [information, setInformation] = useState({
@@ -60,17 +60,17 @@ const ContactForm: React.FC = () => {
       return;
     }
 
-    const formData = {
-      name: information.name.value,
-      surname: information.surname.value,
-      email: information.email.value,
-      phone: information.phone.value,
-      adresa: information.adresa.value,
-      message: "Poruka sa kontakt forme",
-    };
+    // const formData = {
+    //   name: information.name.value,
+    //   surname: information.surname.value,
+    //   email: information.email.value,
+    //   phone: information.phone.value,
+    //   adresa: information.adresa.value,
+    //   message: "Poruka sa kontakt forme",
+    // };
 
     try {
-      await sendEmail(formData);
+      // await sendEmail(formData);
       alert("Poruka uspešno poslata!");
       resetInformation();
     } catch (error) {
