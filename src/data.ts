@@ -395,6 +395,10 @@ export const accordionData: TractorAccordionProps[] = [
         name: 'Kontakt telefon',
         list: [
           {
+            itemName: 'Telefon: 035/312-391',
+            itemHref: 'tel:035312391',
+          },
+          {
             itemName: 'Delovi: 035/311-137',
             itemHref: 'tel:035311137',
           },
