@@ -20,15 +20,16 @@ import { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ product: string }>;
+  params: Promise<{ brand: string; product: string }>;
 }): Promise<Metadata> {
-  const { product } = await params;
-
+  const { brand, product } = await params;
+  
   const { data, error } = await supabase
     .from("products")
-    .select("name, description_one") // minimum
+    .select("name, description_two, images")
     .eq("url", product)
     .single();
+
 
   if (error || !data) {
     return {
@@ -40,7 +41,28 @@ export async function generateMetadata({
   return {
     title: `${data.name} – Jugometal Svilajnac`,
     description:
-      data.description_one || "Detalji o proizvodu iz ponude Jugometal.",
+      data.description_two || "Detalji o proizvodu iz ponude Jugometal.",
+    openGraph: {
+      title: `${data.name} – Jugometal Svilajnac`,
+      description: data.description_two || "",
+      url: `https://jugometal.co.rs/traktori/${brand}/${product}`,
+      images: data.images[0]
+        ? [
+            {
+              url: data.images[0],
+              width: 1200,
+              height: 630,
+              alt: data.name,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.name,
+      description: data.description_two || "",
+      images: data.images ? [data.images[0]] : [],
+    },
   };
 }
 

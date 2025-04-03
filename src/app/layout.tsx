@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     "Solis Traktori",
     "John Deere Srbija",
   ],
-  metadataBase: new URL('https://jugometal.vercel.app/'),
+  metadataBase: new URL('https://jugometal.co.rs/'),
   openGraph: {
     type: "website",
     locale: "sr-RS",
-    url: 'https://jugometal.vercel.app/',
+    url: 'https://jugometal.co.rs/',
     title: "Jugometal – Traktori i Poljoprivredne Mašine",
     description:
       "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju.",
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  other:{
-    'google-site-verification':'xPtQ_7mfT8JYWtTlWS2fPFndqexNXJf9QXBqfGgtknI'
-  }
+  // other:{
+  //   'google-site-verification':'xPtQ_7mfT8JYWtTlWS2fPFndqexNXJf9QXBqfGgtknI'
+  // }
 };
 
 export default function RootLayout({
