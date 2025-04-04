@@ -52,7 +52,7 @@ const EditProduct: React.FC = () => {
 
     try {
       const storagePrefix =
-        "https://hbimjllhujrqysckvtkw.supabase.co/storage/v1/object/public/";
+        "https://fyxbkkxntodbrhkzutxk.supabase.co/storage/v1/object/public/";
 
       // 1️⃣ Brisanje svih slika iz Storage-a
       const imagePaths = product.images
