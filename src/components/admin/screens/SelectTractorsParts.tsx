@@ -9,18 +9,19 @@ import RadioInputs from "../RadioInputs";
 import RadioInput from "../RadioInput";
 
 const traktorskiDelovi = [
-  { title: "Massey Ferguson", state: "massey-ferguson"},
-  { title: "Landini", state: "landini"},
-  { title: "Tafe/IMT", state: "tafe-imt"},
-  { title: "Solis", state: "solis"},
-  { title: "YTO", state: "yto"},
-]
+  { title: "Massey Ferguson", state: "massey-ferguson" },
+  { title: "Jinnma", state: "jinma" },
+  { title: "Landini", state: "landini" },
+  { title: "Tafe/IMT", state: "tafe-imt" },
+  { title: "Solis", state: "solis" },
+  { title: "YTO", state: "yto" },
+];
 const SelectTractorsParts: React.FC = () => {
   const {
     setSelectScreen,
     selectTractorsPartsCategories,
     setSelectTractorsPartCategories,
-    setSelectBrand
+    setSelectBrand,
   } = useAdminContext();
 
   return (
@@ -31,7 +32,7 @@ const SelectTractorsParts: React.FC = () => {
       />
 
       <Back click={() => setSelectScreen("rezervni-delovi")} />
-       <SelectSection
+      <SelectSection
         num="1"
         label="Izaberite kategoriju traktorskih delova."
         description="Izaberite polje kako bi nastavili dalje."
@@ -45,7 +46,7 @@ const SelectTractorsParts: React.FC = () => {
               value={selectTractorsPartsCategories}
               onChange={() => {
                 setSelectTractorsPartCategories(selection.state);
-                setSelectBrand(selection.state)
+                setSelectBrand(selection.state);
               }}
             />
           ))}
