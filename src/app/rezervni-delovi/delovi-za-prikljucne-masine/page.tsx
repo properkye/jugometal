@@ -11,7 +11,7 @@ export default function Delovizaprikljucnemasine() {
         s1L={"/"}
         s2T={"Rezervni delovi"}
         s2L={"/rezervni-delovi"}
-        s3T={"Traktorski delovi"}
+        s3T={"Delovi za prikljucne masine"}
       />
 
       <div className="bg-[#fafafa] w-full h-full">

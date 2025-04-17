@@ -10,7 +10,7 @@ import RadioInput from "../RadioInput";
 
 const traktorskiDelovi = [
   { title: "Massey Ferguson", state: "massey-ferguson" },
-  { title: "Jinnma", state: "jinma" },
+  { title: "Jinma", state: "jinma" },
   { title: "Landini", state: "landini" },
   { title: "Tafe/IMT", state: "tafe-imt" },
   { title: "Solis", state: "solis" },

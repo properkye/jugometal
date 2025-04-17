@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s - Jugometal Svilajnac",
   },
   description:
-    "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju.",
+    "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju. Prodajemo Solis traktore i IMT traktore. Takodje saradjujemo i sa YTO traktorima.",
   keywords: [
     "Traktori",
     "Poljoprivredne Mašine",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     url: 'https://jugometal.co.rs/',
     title: "Jugometal – Traktori i Poljoprivredne Mašine",
     description:
-      "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju.",
+      "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju. Prodajemo Solis traktore i IMT traktore. Takodje saradjujemo i sa YTO traktorima.",
     siteName: "Jugometal – Traktori i Poljoprivredne Mašine",
     images: [
       {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jugometal – Traktori i Poljoprivredne Mašine",
     description:
-      "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju.",
+      "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju. Prodajemo Solis traktore i IMT traktore. Takodje saradjujemo i sa YTO traktorima.",
   },
   icons: {
     icon: "/favicon.ico",

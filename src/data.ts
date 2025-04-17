@@ -930,12 +930,12 @@ export const deloviCategories:CategoryBoxProps[] = [
     link:'/rezervni-delovi/delovi-za-prikljucne-masine',
     quantity:''
   },
-  {
-    alt:'Delovi za priključne mašine Srbija, Delovi za priključne mašine Jugometal, Delovi za priključne mašine',
-    image:'/images/masine/ostalo.png',
-    link:'/rezervni-delovi/ostalo',
-    quantity:''
-  },
+  // {
+  //   alt:'Delovi za priključne mašine Srbija, Delovi za priključne mašine Jugometal, Delovi za priključne mašine',
+  //   image:'/images/masine/ostalo.png',
+  //   link:'/rezervni-delovi/ostalo',
+  //   quantity:''
+  // },
 ]
 
 
