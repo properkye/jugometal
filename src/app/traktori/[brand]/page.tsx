@@ -6,7 +6,7 @@ import ProductBox from "@/components/frontend/ProductBox";
 import ProductsIntro from "@/components/frontend/ProductsIntro";
 import { Metadata } from "next";
 
-export const fetchCache = "force-no-store";
+
 
 function getBrandLabel(brand: string): string {
   if (brand.toLowerCase() === "john-deere") return "John Deere";
