@@ -251,7 +251,7 @@ export const ProductAbout: React.FC<ProductAboutProps> = ({
   return (
     <div className="py-4 w-full md:w-[500px] lg:w-full">
       <h2 className="text-[30px] text-dark mb-8 tracking-[-0.03rem] font-semibold md:text-[36px] lg:text-[42px]">
-        <span className="text-red-500">#</span>
+
         {title}
       </h2>
       <p className="text-[16px] text-light-dark tracking-[-0.03rem] leading-[21px] md:text-base lg:text-[1.2rem] lg:leading-[26px] mb-6">
