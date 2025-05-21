@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
                 </a>
 
                 <a
-                  href="https://www.instagram.com/jugometal"
+                  href="https://www.instagram.com/jugometal_doo/"
                   target="_blank"
                   className="flex gap-4 items-center hover:underline"
                 >
