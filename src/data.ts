@@ -953,6 +953,12 @@ export const traktorskiDeloviCategories:CategoryBoxProps[] = [
     quantity:''
   },
   {
+    alt:'Jinma Traktorski rezervni delovi Srbija, Jinma  Traktorski rezervni delovi Jugometal, Traktorski rezervni delovi Jinma',
+    image:'/images/masine/jinma-delovi.png',
+    link:'/rezervni-delovi/traktorski-delovi/jinma',
+    quantity:''
+  },
+  {
     alt:'IMT Traktorski rezervni delovi Srbija, IMT  Traktorski rezervni delovi Jugometal, Traktorski rezervni delovi IMT',
     image:'/images/masine/imt-delovi.png',
     link:'/rezervni-delovi/traktorski-delovi/imt',
