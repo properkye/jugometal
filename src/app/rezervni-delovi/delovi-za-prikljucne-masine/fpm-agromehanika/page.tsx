@@ -11,7 +11,7 @@ export default async function MasseyFerguson() {
     .from("products")
     .select("*")
     .eq('category',"rezervni-delovi")
-    .eq("brand", "majevica")
+    .eq("brand", "fpm-agromehanika")
 
   if (error) {
     console.error("❌ Greška pri učitavanju proizvoda:", error);
