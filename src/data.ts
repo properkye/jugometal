@@ -6,7 +6,7 @@ export const meta: string =
 const tractorsMeta: string =
   "Jugometal – traktori, IMT, Solis, Belarus, Mahindra, Carraro, YTO, John Deere, rezervni delovi za traktore i poljoprivredna mehanizacija vrhunskog kvaliteta za pouzdan i efikasan rad na njivi.";
 
-const proba = []
+
 
 export const landingBaner: CarouselItemProps[] = [
   {
