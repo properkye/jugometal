@@ -22,7 +22,13 @@ const RezervniDelovi: React.FC = () => {
         <div>
           <Header title="Rezervni delovi" subtitle="Lista svih delova." />
           <div className="py-4 px-8">
-            <Filter setSearchTerm={setSearchTerm}  />
+            <div className="flex items-center justify-between gap-[2rem]">
+              <Filter setSearchTerm={setSearchTerm} />
+              <span className="text-sm text-gray-600">
+                Ukupno proizvoda: {data?.length || 0}
+              </span>
+            </div>
+            
             <ListContainer items={filteredItems} />
           </div>
         </div>
