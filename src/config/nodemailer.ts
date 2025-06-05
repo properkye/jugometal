@@ -5,6 +5,7 @@ const pass = process.env.EMAIL_PASS;
 
 if (!email || !pass) {
   throw new Error('EMAIL i EMAIL_PASS moraju biti definisani u .env fajlu.');
+  console.log('Stavi brankin email')
 }
 
 export const transporter: Transporter = nodemailer.createTransport({
