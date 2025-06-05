@@ -3,7 +3,6 @@ import {
   ProductImage,
   ProductQuestion,
 } from "@/app/traktori/[brand]/[product]/page";
-import ContactForm from "@/components/admin/screens/ContactForm";
 import FrontLayout from "@/components/layouts/FrontLayout";
 import {
   Breadcrumb,
@@ -124,7 +123,6 @@ export default async function Product({
           </div>
 
           <ProductQuestion />
-          <ContactForm />
         </div>
       </div>
     </FrontLayout>
