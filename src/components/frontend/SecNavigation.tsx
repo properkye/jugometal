@@ -3,6 +3,7 @@ import Hamburger from "hamburger-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { ShoppingCart } from "lucide-react";
 
 const SecNavigation: React.FC<SecNavigationProps> = ({ open, setOpen }) => {
   const router = useRouter();
@@ -24,7 +25,8 @@ const SecNavigation: React.FC<SecNavigationProps> = ({ open, setOpen }) => {
             />
           </div>
 
-          <div className="flex justify-between gap-2">
+          <div className="flex justify-between items-center gap-2">
+            <ShoppingCart className="cursor-pointer" onClick={() => router.push('/cart')} />
             <Hamburger toggled={open} toggle={() => setOpen(!open)} size={22} />
           </div>
         </div>

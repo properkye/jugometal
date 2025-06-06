@@ -3,6 +3,7 @@ import {
   ProductImage,
   ProductQuestion,
 } from "@/app/traktori/[brand]/[product]/page";
+import AddToCartBtn from "@/components/frontend/AddToCartBtn";
 import FrontLayout from "@/components/layouts/FrontLayout";
 import {
   Breadcrumb,
@@ -116,9 +117,7 @@ export default async function Product({
                 )}
               </div>
 
-              <button className="w-full py-2 px-4 border  border-black mt-8 rounded-lg hover:bg-black hover:text-white transition-all duration-300 ease-in-out">
-                Dodajte u korpu
-              </button>
+              <AddToCartBtn image={single.images[0]} name={single.name} price={single.regular_price} _id={single.id} />
             </div>
           </div>
 
