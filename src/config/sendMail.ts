@@ -16,7 +16,7 @@ export interface EmailResponse {
 export const sendEmail = async (): Promise<EmailResponse> => {
   try {
     // await axios.post('/api/order', { data });
-
+    console.log('hello')
     return { message: 'Email uspešno poslat.' };
   } catch (error) {
     return { message: 'Došlo je do greške. Pokušajte ponovo kasnije.' };
