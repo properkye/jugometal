@@ -32,7 +32,7 @@ const Navigation: React.FC<NavigationProps> = ({ isMobileMenuOpen, setIsMobileMe
 
   const logout = async () => {
     await signOut();
-    router.push("/login");
+    // Admin stranica će automatski redirect-ovati na /login
   };
 
   // Get user initials from email
