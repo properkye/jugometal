@@ -12,8 +12,15 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { signIn } = useAuth();
+  const { signIn, user, loading: authLoading } = useAuth();
   const router = useRouter();
+
+  // Redirect to admin if already logged in
+  useEffect(() => {
+    if (!authLoading && user) {
+      router.push("/admin");
+    }
+  }, [authLoading, user, router]);
 
   // Load saved email if remember me was checked
   useEffect(() => {
