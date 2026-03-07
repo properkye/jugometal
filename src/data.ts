@@ -1,10 +1,10 @@
 import { CarouselItemProps, CategoryBoxProps, PartnersProps, TractorAccordionProps } from "./models/types";
 
 export const meta: string =
-  "Jugometal – traktori, priključne mašine, IMT, Solis, rezervni delovi za traktore i poljoprivredna mehanizacija vrhunskog kvaliteta za pouzdan i efikasan rad na njivi.";
+  "Jugometal – IMT, Solis, John Deere, YTO, Mahindra, Carraro, Belarus traktori, rezervni delovi za traktor, priključne mašine i poljoprivredna mehanizacija vrhunskog kvaliteta.";
 
 const tractorsMeta: string =
-  "Jugometal – traktori, IMT, Solis, Belarus, Mahindra, Carraro, YTO, John Deere, rezervni delovi za traktore i poljoprivredna mehanizacija vrhunskog kvaliteta za pouzdan i efikasan rad na njivi.";
+  "Jugometal – traktori IMT, Solis, John Deere, Belarus, Mahindra, Carraro, YTO. Rezervni delovi za traktor, poljoprivredne mašine vrhunskog kvaliteta za pouzdan i efikasan rad na njivi.";
 
 
 
@@ -14,7 +14,7 @@ export const landingBaner: CarouselItemProps[] = [
     subtitle:
       "Naši traktori kombinuju vrhunsku snagu, izdržljivost i inovativnu tehnologiju kako bi osigurali maksimalnu efikasnost na polju.",
     href: "/traktori",
-    alt: meta,
+    alt: "Jugometal - IMT, Solis, John Deere, YTO, Mahindra traktori",
     imgSrc: "/banners/traktori.jpg",
   },
   {
@@ -22,7 +22,7 @@ export const landingBaner: CarouselItemProps[] = [
     subtitle:
       "Naša ponuda priključnih mašina obuhvata širok spektar proizvoda koji će zadovoljiti sve vaše potrebe na polju.",
     href: "/prikljucne-masine",
-    alt: meta,
+    alt: "Jugometal - Priključne mašine za IMT, Solis, John Deere traktore",
     imgSrc: "/banners/masine.jpg",
   },
   {
@@ -30,7 +30,7 @@ export const landingBaner: CarouselItemProps[] = [
     subtitle:
       "U našoj ponudi možete pronaći rezervne delove za traktore i poljoprivrednu mehanizaciju vrhunskog kvaliteta.",
     href: "/rezervni-delovi",
-    alt: meta,
+    alt: "Jugometal - Rezervni delovi za traktor, IMT, Solis, John Deere",
     imgSrc: "/banners/delovi.jpg",
   },
 ];
@@ -65,10 +65,10 @@ export const rezervniBaner: CarouselItemProps[] = [
 export const tractorSection: CarouselItemProps[] = [
   {
     title: "Solis",
-    subtitle: "Solis je najbrže rastući brend kompaktnih traktora u Evropi.",
+    subtitle: "Solis je najbrže rastuće brend kompaktnih traktora u Evropi.",
     href: "traktori/solis",
     imgSrc: "/banners/traktori/solis.jpg",
-    alt: tractorsMeta,
+    alt: "Solis traktori - Jugometal Svilajnac, rezervni delovi dostupni",
   },
   {
     title: "IMT / Tafe",
@@ -76,7 +76,7 @@ export const tractorSection: CarouselItemProps[] = [
       "IMT je pionir u mehanizaciji poljoprivrede i tehnologiji traktora.",
     href: "traktori/imt-tafe",
     imgSrc: "/banners/traktori/imt.webp",
-    alt: tractorsMeta,
+    alt: "IMT Tafe traktori - Jugometal, rezervni delovi za IMT traktor",
   },
   {
     title: "Belarus / Mahindra",
@@ -84,28 +84,28 @@ export const tractorSection: CarouselItemProps[] = [
       "Belarus je serija četvorotočkaških traktora koji se proizvode od 1950. godine u fabrici Minsk Tractor Works (MTZ) u Minsku, Belorusija.",
     href: "traktori/belarus-mahindra",
     imgSrc: "/banners/traktori/belarus.webp",
-    alt: tractorsMeta,
+    alt: "Belarus i Mahindra traktori - Jugometal, rezervni delovi",
   },
   {
     title: "Carraro",
     subtitle: "Široka ponuda specijalizovanih traktora snage od 65 do 120 KS.",
     href: "traktori/carraro",
     imgSrc: "/banners/traktori/carraro.jpeg",
-    alt: tractorsMeta,
+    alt: "Carraro traktori - Jugometal Svilajnac, specijalizovani traktori",
   },
   {
     title: "YTO",
     subtitle: "YTO, vodeći dobavljač poljoprivredne mehanizacije u Kini.",
     href: "traktori/yto",
     imgSrc: "/banners/traktori/yto.jpg",
-    alt: tractorsMeta,
+    alt: "YTO traktori - Jugometal, kineska poljoprivredna mehanizacija",
   },
   {
     title: "John Deere",
     subtitle: "Svestrani, snažni i efikasni – John Deere.",
     href: "traktori/john-deere",
     imgSrc: "/banners/traktori/deere.jpg",
-    alt: tractorsMeta,
+    alt: "John Deere traktori - Jugometal Srbija, rezervni delovi",
   },
 ];
 

@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { supabase } from "@/lib/supabase";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || "https://jugometal.vercel.app").replace(/\/$/, "");
+  const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || "https://jugometal.co.rs").replace(/\/$/, "");
 
   // Statičke rute
   const staticPaths = [

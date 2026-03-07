@@ -6,9 +6,12 @@ import { machinesCategories, meta } from "@/data";
 import { Metadata } from "next";
 
 export const metadata:Metadata = {
-  title:'Priključne mašine',
-  description: "Širok asortiman poljoprivrednih mašina: balirke, kosačice, sakupljači, utovarivači, freze, plugovi, sejalice, prskalice, rasipači, setvospremači, atomizeri, mulčari, prikolice, cisterne i rasturači. Kvalitetna mehanizacija za modernu poljoprivredu u Srbiji."
-
+  title:'Priključne mašine - Jugometal',
+  description: "Jugometal - Širok asortiman poljoprivrednih mašina: balirke, kosačice, sakupljači, utovarivači, freze, plugovi, sejalice, prskalice, rasipači, setvospremači, atomizeri, mulčari, prikolice, cisterne i rasturači. Kompatibilne sa IMT, Solis, John Deere, YTO, Mahindra, Carraro, Belarus traktorima. Kvalitetna mehanizacija za modernu poljoprivredu u Srbiji.",
+  keywords: ['Priključne mašine', 'Jugometal', 'IMT', 'Solis', 'John Deere', 'Poljoprivredne mašine', 'Rezervni delovi za traktor'],
+  alternates: {
+    canonical: 'https://jugometal.co.rs/prikljucne-masine'
+  }
 }
 
 export default function PrikljucneMasine() {

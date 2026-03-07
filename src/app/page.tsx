@@ -16,8 +16,15 @@ import {
   tractorSection,
 } from "@/data";
 import { supabase } from "@/lib/supabase";
+import { Metadata } from "next";
 
 export const fetchCache = "force-no-store";
+
+export const metadata: Metadata = {
+  title: "Jugometal – IMT, Solis, John Deere, YTO, Mahindra Traktori i Rezervni Delovi",
+  description: "Jugometal Svilajnac – prodaja traktora (IMT, Solis, John Deere, YTO, Mahindra, Carraro, Belarus), rezervnih delova za traktore, poljoprivrednih mašina i opreme širom Srbije. Rezervni delovi za traktor uvek dostupni.",
+  keywords: ["Jugometal", "IMT", "Solis", "John Deere", "YTO", "Mahindra", "Carraro", "Belarus", "Rezervni delovi za traktor"],
+};
 
 export default async function Home() {
   const { data: products } = await supabase
@@ -25,8 +32,89 @@ export default async function Home() {
     .select("*")
     .eq("featuredProduct", true);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Jugometal",
+    "image": "https://jugometal.co.rs/logo.png",
+    "description": "Prodaja traktora (IMT, Solis, John Deere, YTO, Mahindra, Carraro, Belarus), rezervnih delova za traktore i poljoprivrednih mašina.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Svilajnac",
+      "addressCountry": "RS"
+    },
+    "url": "https://jugometal.co.rs",
+    "priceRange": "$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Traktori i Rezervni Delovi",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "IMT Traktori"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Solis Traktori"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "John Deere Traktori"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "YTO Traktori"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Mahindra Traktori"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Carraro Traktori"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Belarus Traktori"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Rezervni delovi za traktor"
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <FrontLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <NavigationList />
       <CarouselContainer items={landingBaner} />
 

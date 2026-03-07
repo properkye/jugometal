@@ -5,6 +5,7 @@ import Header from "../frontend/Header";
 import SecNavigation from "../frontend/SecNavigation";
 import PrimNavigation from "../frontend/PrimNavigation";
 import Footer from "../frontend/Footer";
+import Breadcrumbs from "../frontend/Breadcrumbs";
 import { AnimatePresence } from "framer-motion";
 import Overlay from "../frontend/Overlay";
 import Sidemenu from "../frontend/Sidemenu";
@@ -16,6 +17,7 @@ const FrontLayout: React.FC<FrontLayoutProps> = ({ children }) => {
       <Header />
       <SecNavigation open={openMenu} setOpen={setOpenMenu} />
       <PrimNavigation />
+      <Breadcrumbs />
 
       <AnimatePresence>
         {openMenu && (

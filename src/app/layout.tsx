@@ -17,31 +17,46 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jugometal – Traktori i Poljoprivredne Mašine",
+    default: "Jugometal – IMT, Solis, John Deere, YTO, Mahindra Traktori i Rezervni Delovi",
     template: "%s - Jugometal Svilajnac",
   },
   description:
-    "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju. Prodajemo Solis traktore i IMT traktore. Takodje saradjujemo i sa YTO traktorima.",
+    "Jugometal Svilajnac – prodaja traktora (IMT, Solis, John Deere, YTO, Mahindra, Carraro, Belarus), rezervnih delova za traktore, poljoprivrednih mašina i opreme širom Srbije. Rezervni delovi za traktor uvek dostupni. Pouzdan partner za savremenu mehanizaciju.",
   keywords: [
-    "Traktori",
-    "Poljoprivredne Mašine",
-    "Rezervni Delovi Za Traktore",
-    "Poljoprivredna Oprema",
-    "Traktori Srbija",
+    "Jugometal",
+    "IMT",
+    "Solis",
+    "John Deere",
+    "YTO",
+    "Mahindra",
+    "Carraro",
+    "Belarus",
+    "Rezervni delovi za traktor",
     "IMT Traktori",
-    "YTO Traktori",
-    "Belarus Traktori",
     "Solis Traktori",
     "John Deere Srbija",
+    "YTO Traktori",
+    "Mahindra Traktori",
+    "Carraro Traktori",
+    "Belarus Traktori",
+    "Traktori Srbija",
+    "Poljoprivredne Mašine",
+    "Rezervni Delovi Za Traktore",
+    "Traktorski Delovi",
+    "Poljoprivredna Oprema",
+    "Jugometal Svilajnac",
   ],
   metadataBase: new URL('https://jugometal.co.rs/'),
+  alternates: {
+    canonical: 'https://jugometal.co.rs/'
+  },
   openGraph: {
     type: "website",
     locale: "sr-RS",
     url: 'https://jugometal.co.rs/',
-    title: "Jugometal – Traktori i Poljoprivredne Mašine",
+    title: "Jugometal – IMT, Solis, John Deere, YTO, Mahindra Traktori i Rezervni Delovi",
     description:
-      "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju. Prodajemo Solis traktore i IMT traktore. Takodje saradjujemo i sa YTO traktorima.",
+      "Jugometal Svilajnac – prodaja traktora (IMT, Solis, John Deere, YTO, Mahindra, Carraro, Belarus), rezervnih delova za traktore, poljoprivrednih mašina i opreme širom Srbije. Rezervni delovi za traktor uvek dostupni.",
     siteName: "Jugometal – Traktori i Poljoprivredne Mašine",
     images: [
       {
@@ -55,16 +70,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jugometal – Traktori i Poljoprivredne Mašine",
+    title: "Jugometal – IMT, Solis, John Deere, YTO, Mahindra Traktori i Rezervni Delovi",
     description:
-      "Jugometal Svilajnac – prodaja traktora, poljoprivrednih mašina, rezervnih delova i opreme za poljoprivredu širom Srbije. Pouzdan partner za savremenu mehanizaciju. Prodajemo Solis traktore i IMT traktore. Takodje saradjujemo i sa YTO traktorima.",
+      "Jugometal Svilajnac – prodaja traktora (IMT, Solis, John Deere, YTO, Mahindra, Carraro, Belarus), rezervnih delova za traktore, poljoprivrednih mašina i opreme širom Srbije. Rezervni delovi za traktor uvek dostupni.",
   },
   icons: {
     icon: "/favicon.ico",
   },
-  // other:{
-  //   'google-site-verification':'xPtQ_7mfT8JYWtTlWS2fPFndqexNXJf9QXBqfGgtknI'
-  // }
+  // verification: {
+  //   google: 'google-code-here', // Samo ako koristiš HTML tag metod
+  // },
 };
 
 export default function RootLayout({

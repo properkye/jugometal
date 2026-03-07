@@ -42,7 +42,10 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
       "Prodaja traktora",
       "Poljoprivredne mašine",
       "Jugometal Svilajnac"
-    ]
+    ],
+    alternates: {
+      canonical: `https://jugometal.co.rs/traktori/${brand}`
+    }
   };
 }
 
